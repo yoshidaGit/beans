@@ -13,6 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var memberArray:[String] = []
+    var memberStart:[String] = []
+    var memberFinish:[String] = []
+    var memberColor:[Int] = []
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

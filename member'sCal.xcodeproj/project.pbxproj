@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08441B26DA81005A4A23 /* AppDelegate.swift */; };
 		33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08461B26DA81005A4A23 /* member_sCal.xcdatamodeld */; };
-		33AE084A1B26DA81005A4A23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08491B26DA81005A4A23 /* ViewController.swift */; };
+		33AE084A1B26DA81005A4A23 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08491B26DA81005A4A23 /* MonthViewController.swift */; };
 		33AE084D1B26DA81005A4A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AE084B1B26DA81005A4A23 /* Main.storyboard */; };
 		33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE084E1B26DA81005A4A23 /* Images.xcassets */; };
 		33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE08501B26DA82005A4A23 /* LaunchScreen.xib */; };
 		33AE085E1B26DA82005A4A23 /* member_sCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE085D1B26DA82005A4A23 /* member_sCalTests.swift */; };
+		33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */; };
+		33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */; };
+		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
+		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
+		33D942FF1B2DB023009D0E95 /* memberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942FD1B2DB023009D0E95 /* memberPlus.swift */; };
+		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
+		33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +38,20 @@
 		33AE08431B26DA81005A4A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AE08441B26DA81005A4A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33AE08471B26DA81005A4A23 /* member_sCal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = member_sCal.xcdatamodel; sourceTree = "<group>"; };
-		33AE08491B26DA81005A4A23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		33AE08491B26DA81005A4A23 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		33AE084C1B26DA81005A4A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33AE084E1B26DA81005A4A23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		33AE08511B26DA82005A4A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		33AE08571B26DA82005A4A23 /* member'sCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "member'sCalTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE085C1B26DA82005A4A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AE085D1B26DA82005A4A23 /* member_sCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = member_sCalTests.swift; sourceTree = "<group>"; };
+		33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaCell.swift; sourceTree = "<group>"; };
+		33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaCell.xib; sourceTree = "<group>"; };
+		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
+		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
+		33D942FD1B2DB023009D0E95 /* memberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberPlus.swift; sourceTree = "<group>"; };
+		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
+		33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCenterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +93,16 @@
 		33AE08411B26DA81005A4A23 /* member'sCal */ = {
 			isa = PBXGroup;
 			children = (
-				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
-				33AE08491B26DA81005A4A23 /* ViewController.swift */,
 				33AE084B1B26DA81005A4A23 /* Main.storyboard */,
+				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
+				33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */,
+				33AE08491B26DA81005A4A23 /* MonthViewController.swift */,
+				33D942FD1B2DB023009D0E95 /* memberPlus.swift */,
+				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
+				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
+				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
+				33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */,
+				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
 				33AE084E1B26DA81005A4A23 /* Images.xcassets */,
 				33AE08501B26DA82005A4A23 /* LaunchScreen.xib */,
 				33AE08461B26DA81005A4A23 /* member_sCal.xcdatamodeld */,
@@ -198,6 +219,9 @@
 				33AE084D1B26DA81005A4A23 /* Main.storyboard in Resources */,
 				33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */,
 				33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */,
+				33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */,
+				33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */,
+				33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +239,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33AE084A1B26DA81005A4A23 /* ViewController.swift in Sources */,
+				33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */,
+				33AE084A1B26DA81005A4A23 /* MonthViewController.swift in Sources */,
 				33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */,
+				33D942FF1B2DB023009D0E95 /* memberPlus.swift in Sources */,
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
+				33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */,
+				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +441,7 @@
 				33AE08631B26DA82005A4A23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33AE08641B26DA82005A4A23 /* Build configuration list for PBXNativeTarget "member'sCalTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +450,7 @@
 				33AE08661B26DA82005A4A23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
