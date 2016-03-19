@@ -18,9 +18,11 @@
 		33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */; };
 		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
 		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
-		33D942FF1B2DB023009D0E95 /* memberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942FD1B2DB023009D0E95 /* memberPlus.swift */; };
 		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
 		33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */; };
+		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
+		5FE34C4C1C9C417600927B03 /* custumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* custumCell.swift */; };
+		5FE34C4E1C9C43A800927B03 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE34C4D1C9C43A800927B03 /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +51,12 @@
 		33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaCell.xib; sourceTree = "<group>"; };
 		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
 		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
-		33D942FD1B2DB023009D0E95 /* memberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberPlus.swift; sourceTree = "<group>"; };
 		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
 		33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCenterViewController.swift; sourceTree = "<group>"; };
+		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
+		5FE34C4B1C9C417600927B03 /* custumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custumCell.swift; sourceTree = "<group>"; };
+		5FE34C4D1C9C43A800927B03 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 				33AE08411B26DA81005A4A23 /* member'sCal */,
 				33AE085A1B26DA82005A4A23 /* member'sCalTests */,
 				33AE08401B26DA81005A4A23 /* Products */,
+				5FE34C4D1C9C43A800927B03 /* 1.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,10 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				33AE084B1B26DA81005A4A23 /* Main.storyboard */,
+				5FE34C4B1C9C417600927B03 /* custumCell.swift */,
 				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
 				33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */,
 				33AE08491B26DA81005A4A23 /* MonthViewController.swift */,
-				33D942FD1B2DB023009D0E95 /* memberPlus.swift */,
+				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
+				5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
 				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
@@ -180,11 +188,14 @@
 		33AE08371B26DA81005A4A23 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = yoshidajumokui.llc;
 				TargetAttributes = {
 					33AE083E1B26DA81005A4A23 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = HWBY45P9ZY;
 					};
 					33AE08561B26DA82005A4A23 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -221,6 +232,7 @@
 				33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */,
 				33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */,
 				33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */,
+				5FE34C4E1C9C43A800927B03 /* 1.png in Resources */,
 				33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,7 +254,8 @@
 				33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */,
 				33AE084A1B26DA81005A4A23 /* MonthViewController.swift in Sources */,
 				33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */,
-				33D942FF1B2DB023009D0E95 /* memberPlus.swift in Sources */,
+				5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */,
+				5FE34C4C1C9C417600927B03 /* custumCell.swift in Sources */,
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
 				33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */,
 				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
@@ -372,9 +385,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "member'sCal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -382,9 +399,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "member'sCal/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

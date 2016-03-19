@@ -27,7 +27,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
 //セルの内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: .Default, reuseIdentifier: "GenbaCell")
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: "GenbaCell")
         return cell
     }
     
