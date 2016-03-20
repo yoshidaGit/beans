@@ -44,7 +44,7 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     var dateString = "08:00"//-------------------------------------------------------時間設定用変数
     var name = ""//-------------------------------------------------------------名前
     var beans = 0//-------------------------------------------------------------ビーンズ
-    var weekSwitch = ""//-------------------------------------------------------曜日選択用変数
+//    var weekSwitch = ""//-------------------------------------------------------曜日選択用変数
     var monDay = false
     var tueDay = false
     var wenDay = false
@@ -65,6 +65,7 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         
 //        StachWeek.layer.masksToBounds = true---------スタックビューの角を丸くしたいけど・・
 //        StachWeek.layer.cornerRadius = 10
+        StachWeek.backgroundColor = UIColor.blueColor()
     }
     
     override func didReceiveMemoryWarning() {
@@ -170,10 +171,9 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
 //---------------------------------------------------------------------------------collectionView処理
     // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:custumCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell1", forIndexPath: indexPath) as! custumCell
+        let cell:beansCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell1", forIndexPath: indexPath) as! beansCell
         //        cell.lblSample.text = "ラベル\(indexPath.row)";
         cell.selectBeans.image = UIImage(named: "1.png")
-        cell.backgroundColor = UIColor.blackColor()
         return cell
     }
     
@@ -217,44 +217,37 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
  
 //------------------------------------------------------------------------------------曜日ボタンアクション
     @IBAction func Mon(sender: UIButton) {
-        let x = switchWeek(monDay)
-        monDay = x
+        monDay = switchWeek(monDay)
         switchColor(mon,hantei: monDay)
     }
     
     @IBAction func Tue(sender: UIButton) {
-        let x = switchWeek(tueDay)
-        tueDay = x
+        tueDay = switchWeek(tueDay)
         switchColor(tue,hantei: tueDay)
     }
     
     @IBAction func Wen(sender: UIButton) {
-        let x = switchWeek(wenDay)
-        wenDay = x
+        wenDay = switchWeek(wenDay)
         switchColor(wen,hantei:wenDay)
     }
     
     @IBAction func Thu(sender: UIButton) {
-        let x = switchWeek(thuDay)
-        thuDay = x
+        thuDay = switchWeek(thuDay)
         switchColor(thu,hantei:thuDay)
     }
     
     @IBAction func Fri(sender: UIButton) {
-        let x = switchWeek(friDay)
-        friDay = x
+        friDay = switchWeek(friDay)
         switchColor(fri,hantei:friDay)
     }
     
     @IBAction func Sta(sender: UIButton) {
-        let x = switchWeek(staDay)
-        staDay = x
+        staDay = switchWeek(staDay)
         switchColor(sta,hantei:staDay)
     }
     
     @IBAction func Sun(sender: UIButton) {
-        let x = switchWeek(sunDay)
-        sunDay = x
+        sunDay = switchWeek(sunDay)
         switchColor(sun,hantei:sunDay)
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class custumCell:UICollectionViewCell{
+class beansCell:UICollectionViewCell{
     @IBOutlet weak var selectBeans: UIImageView!
     
 }

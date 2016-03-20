@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08441B26DA81005A4A23 /* AppDelegate.swift */; };
 		33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08461B26DA81005A4A23 /* member_sCal.xcdatamodeld */; };
-		33AE084A1B26DA81005A4A23 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE08491B26DA81005A4A23 /* MonthViewController.swift */; };
 		33AE084D1B26DA81005A4A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33AE084B1B26DA81005A4A23 /* Main.storyboard */; };
 		33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE084E1B26DA81005A4A23 /* Images.xcassets */; };
 		33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE08501B26DA82005A4A23 /* LaunchScreen.xib */; };
@@ -19,10 +18,12 @@
 		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
 		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
 		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
-		33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */; };
 		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
-		5FE34C4C1C9C417600927B03 /* custumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* custumCell.swift */; };
+		5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* beansCell.swift */; };
 		5FE34C4E1C9C43A800927B03 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE34C4D1C9C43A800927B03 /* 1.png */; };
+		5FF65AF51C9E50110039FDF4 /* dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF65AF41C9E50110039FDF4 /* dayCell.swift */; };
+		5FF65B311C9E80C90039FDF4 /* CalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF65B301C9E80C90039FDF4 /* CalViewController.swift */; };
+		5FF65B6D1C9ED95D0039FDF4 /* WorkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,6 @@
 		33AE08431B26DA81005A4A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AE08441B26DA81005A4A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33AE08471B26DA81005A4A23 /* member_sCal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = member_sCal.xcdatamodel; sourceTree = "<group>"; };
-		33AE08491B26DA81005A4A23 /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		33AE084C1B26DA81005A4A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33AE084E1B26DA81005A4A23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		33AE08511B26DA82005A4A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -52,11 +52,13 @@
 		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
 		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
 		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
-		33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCenterViewController.swift; sourceTree = "<group>"; };
 		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
-		5FE34C4B1C9C417600927B03 /* custumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = custumCell.swift; sourceTree = "<group>"; };
+		5FE34C4B1C9C417600927B03 /* beansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beansCell.swift; sourceTree = "<group>"; };
 		5FE34C4D1C9C43A800927B03 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		5FF65AF41C9E50110039FDF4 /* dayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayCell.swift; sourceTree = "<group>"; };
+		5FF65B301C9E80C90039FDF4 /* CalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalViewController.swift; sourceTree = "<group>"; };
+		5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,16 +102,17 @@
 			isa = PBXGroup;
 			children = (
 				33AE084B1B26DA81005A4A23 /* Main.storyboard */,
-				5FE34C4B1C9C417600927B03 /* custumCell.swift */,
 				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
-				33D943011B2E81A8009D0E95 /* MemberCenterViewController.swift */,
-				33AE08491B26DA81005A4A23 /* MonthViewController.swift */,
+				5FF65B301C9E80C90039FDF4 /* CalViewController.swift */,
+				5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */,
 				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
+				5FE34C4B1C9C417600927B03 /* beansCell.swift */,
+				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
+				33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */,
 				5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
 				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
-				33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */,
 				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
 				33AE084E1B26DA81005A4A23 /* Images.xcassets */,
 				33AE08501B26DA82005A4A23 /* LaunchScreen.xib */,
@@ -251,11 +254,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33D943021B2E81A8009D0E95 /* MemberCenterViewController.swift in Sources */,
-				33AE084A1B26DA81005A4A23 /* MonthViewController.swift in Sources */,
+				5FF65B311C9E80C90039FDF4 /* CalViewController.swift in Sources */,
+				5FF65B6D1C9ED95D0039FDF4 /* WorkTableViewCell.swift in Sources */,
 				33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */,
+				5FF65AF51C9E50110039FDF4 /* dayCell.swift in Sources */,
 				5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */,
-				5FE34C4C1C9C417600927B03 /* custumCell.swift in Sources */,
+				5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */,
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
 				33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */,
 				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
