@@ -18,7 +18,7 @@
 
 import UIKit
 
-class MemberPlus: UIViewController {
+class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     @IBOutlet weak var namePlus: UITextField!
     @IBOutlet weak var timeScrollInView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -59,6 +59,7 @@ class MemberPlus: UIViewController {
         finishTime.setTitle("\(timeFinish)", forState: UIControlState.Normal)
         startTime.layer.cornerRadius = 3
         finishTime.layer.cornerRadius = 3
+        OK.layer.cornerRadius = 3
 
          df.dateFormat = "HH:mm"//-----------------------------------------------日付のフォーマットを決定
         
