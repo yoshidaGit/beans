@@ -16,13 +16,15 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        calDisplay.delegate = self
+        calDisplay.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
 //----------------------------------------------------------------------------------コレクションビューセルのサイズ
+//        calDisplay.delegate = self
 //        func collectionView(collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) ->CGSize{
 //            let size = calDisplay.frame.size.width / 7
-//            return CGSize(width:size,height:60)
-//            return CGSize(width:20,height:20)
-        
+//            return CGSize(width:size,height:size)
+//        print("Ok")
 //        }
 }
     
@@ -32,15 +34,29 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     }
 
     override func viewWillAppear(animated: Bool) {
+//            var ad = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
+        
+        
+        
+        
+        
+        
         calDisplay.reloadData()
+        workDisplay.reloadData()
+        
     }
     
-//    override func viewDidLayoutSubviews() {
-//        func collectionView(collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) ->CGSize{
-//            let size = self.view.frame.size.width / 7
-//            return CGSize(width:size,height:size)
-//        }
-//    }
+    override func viewDidLayoutSubviews() {
+        func collectionView(collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) ->CGSize{
+            let size = calDisplay.frame.size.width / 20
+            return CGSize(width:size,height:size)
+            
+//            NSLog("bbbbbbb")
+//            let size = calDisplay.frame.size.width / 10//7 - 1 return CGSizeMake(size,size)
+        }
+    }
     
     
     
@@ -48,6 +64,7 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
 //---------------------------------------------------------------------------------コレクションビュー処理
     // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            
         let cell:dayCell = collectionView.dequeueReusableCellWithReuseIdentifier("calCell1", forIndexPath: indexPath) as! dayCell
         //        cell.lblSample.text = "ラベル\(indexPath.row)";
         //        cell.selectBeans.image = UIImage(named: "1.png")
@@ -56,12 +73,12 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     
     // セクションの数（とりあえず）
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 0
     }
     
     // 表示するセルの数（とりあえず）
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 10
     }
     
     
@@ -77,20 +94,101 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     
     
     
+    
+    
+    
+    
+    
 //-----------------------------------------------------------------------------------------テーブルビュー処理
     //行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 6
     }
     
     //セルの内容
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "GenbaCell")
+//        let cell = UITableViewCell(style: .Default, reuseIdentifier: "genbaCell")
+        if indexPath.section == 0{
+            
+        let cell = tableView.dequeueReusableCellWithIdentifier("genbaCell") as! WorkTableViewCell
+        cell.start.text = "\(indexPath.row)"
         return cell
     }
+        return UITableViewCell()
+    }
+
     
     //行を選択された時に呼ばれる
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+ 
+    
+//-----------------------------------------------------------------------------------------セルにデータをセット
+    func setCell(cell:WorkTableViewCell,atIndexPath indezPath:NSIndexPath){
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

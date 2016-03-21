@@ -160,7 +160,21 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         ad.memberName.append(name)
         ad.memberStart.append(timeStart)
         ad.memberFinish.append(timeFinish)
+        ad.memberBeans.append(beans)
+        ad.memberMon.append(monDay)
+        ad.memberTue.append(tueDay)
+        ad.memberWen.append(wenDay)
+        ad.memberThu.append(thuDay)
+        ad.memberFri.append(friDay)
+        ad.memberSta.append(staDay)
+        ad.memberSun.append(sunDay)
     }
+    
+    @IBAction func saveAndSegue(sender: UIBarButtonItem) {
+        allSave()
+        //このあとCalViewControllerへ戻る
+    }
+    
     
 
     

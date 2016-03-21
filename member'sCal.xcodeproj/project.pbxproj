@@ -13,7 +13,6 @@
 		33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33AE084E1B26DA81005A4A23 /* Images.xcassets */; };
 		33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE08501B26DA82005A4A23 /* LaunchScreen.xib */; };
 		33AE085E1B26DA82005A4A23 /* member_sCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AE085D1B26DA82005A4A23 /* member_sCalTests.swift */; };
-		33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */; };
 		33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */; };
 		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
 		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
@@ -47,7 +46,6 @@
 		33AE08571B26DA82005A4A23 /* member'sCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "member'sCalTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33AE085C1B26DA82005A4A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33AE085D1B26DA82005A4A23 /* member_sCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = member_sCalTests.swift; sourceTree = "<group>"; };
-		33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaCell.swift; sourceTree = "<group>"; };
 		33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaCell.xib; sourceTree = "<group>"; };
 		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
 		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
@@ -105,10 +103,9 @@
 				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
 				5FF65B301C9E80C90039FDF4 /* CalViewController.swift */,
 				5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */,
+				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
 				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
 				5FE34C4B1C9C417600927B03 /* beansCell.swift */,
-				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
-				33D942F51B2D9D7A009D0E95 /* GenbaCell.swift */,
 				5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
@@ -261,7 +258,6 @@
 				5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */,
 				5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */,
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
-				33D942F71B2D9D7A009D0E95 /* GenbaCell.swift in Sources */,
 				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

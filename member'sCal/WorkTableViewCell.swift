@@ -9,9 +9,18 @@
 import UIKit
 
 class WorkTableViewCell: UITableViewCell {
-    @IBOutlet weak var start: UIView!
+    @IBOutlet weak var start: UILabel!
     @IBOutlet weak var finish: UILabel!
     @IBOutlet weak var workName: UILabel!
-    @IBOutlet weak var beansCollection: UICollectionView!
-
+   
+//    func viewWill(){
+//        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+//        self.start.text = ad.memberStart[0]
+//    }
+    
+    
+    
+    
+    
+   
 }

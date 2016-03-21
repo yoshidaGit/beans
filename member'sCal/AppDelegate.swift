@@ -13,14 +13,29 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
     
-    var memberName:[String] = []
-    var memberStart:[String] = []
-    var memberFinish:[String] = []
-    var memberBeans:[Int] = []
+//------------------------------------------作業員テーブル
+    var memberName:[String] = ["吉田","yoshida"]
+    var memberStart:[String] = ["08:01","08:02"]
+    var memberFinish:[String] = ["17:01","17:02"]
+    var memberBeans:[Int] = [0,1]
     var memberDate:[String] = []
     var memberGenba:[String] = []
+    var memberMon:[Bool] = [false,true]
+    var memberTue:[Bool] = [false,true]
+    var memberWen:[Bool] = [false,true]
+    var memberThu:[Bool] = [false,true]
+    var memberFri:[Bool] = [false,true]
+    var memberSta:[Bool] = [false,true]
+    var memberSun:[Bool] = [false,true]
 
+//-------------------------------------------カレンダーテーブル
+    var calWorkName:[String] = ["蒔田","清水ヶ丘"]
+    var calStartTime:[String] = ["08:10","終日"]
+    var calFinishTime:[String] = ["17:10",""]
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
