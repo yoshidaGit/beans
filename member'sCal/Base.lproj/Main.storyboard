@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mEs-iK-f1a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7iz-zM-I0R">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -69,7 +69,7 @@
                                         <rect key="frame" x="0.0" y="28" width="296" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ywX-9q-yEi" id="5mL-O6-A8o" userLabel="view">
-                                            <rect key="frame" x="0.0" y="0.0" width="296" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="296" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhe-sJ-OwL" userLabel="start">
@@ -97,7 +97,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-aq-OQG">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-aq-OQG">
                                                     <rect key="frame" x="218" y="0.0" width="77" height="59"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -155,7 +155,6 @@
                                             <outlet property="finish" destination="cwQ-GD-Eyg" id="L6a-qv-WOf"/>
                                             <outlet property="start" destination="uhe-sJ-OwL" id="7Ri-BS-dqb"/>
                                             <outlet property="workName" destination="IKN-k8-TYP" id="QDc-xO-UJb"/>
-                                            <segue destination="mEs-iK-f1a" kind="showDetail" id="Zkb-Sw-Ksq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -865,7 +864,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRE-Zu-7iT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1002" y="1111"/>
+            <point key="canvasLocation" x="386" y="751"/>
         </scene>
         <!--Animator Delegate-->
         <scene sceneID="I2H-5n-My2">
@@ -936,7 +935,7 @@
                                         <rect key="frame" x="0.0" y="28" width="296" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6df-mg-m7k" id="UMf-8h-mGT" userLabel="view">
-                                            <rect key="frame" x="0.0" y="0.0" width="296" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="296" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3y-n3-mj2" userLabel="start">
@@ -1023,6 +1022,7 @@
                                             <outlet property="finish" destination="wDW-Uq-Iaw" id="WTD-VQ-LYV"/>
                                             <outlet property="start" destination="o3y-n3-mj2" id="kxi-FT-RbM"/>
                                             <outlet property="workName" destination="gjw-df-Q97" id="dLB-LB-edN"/>
+                                            <segue destination="mEs-iK-f1a" kind="showDetail" id="IN8-9G-HGl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

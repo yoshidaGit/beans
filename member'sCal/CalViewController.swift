@@ -8,8 +8,7 @@
 
 import UIKit
 
-class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate {
-    @IBOutlet weak var calDisplay: UICollectionView!
+class CalViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var workDisplay: UITableView!
     
     // MARK: - Properties
@@ -28,16 +27,7 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        calDisplay.delegate = self
-//        calDisplay.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
-//----------------------------------------------------------------------------------コレクションビューセルのサイズ
-//        calDisplay.delegate = self
-//        func collectionView(collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) ->CGSize{
-//            let size = calDisplay.frame.size.width / 7
-//            return CGSize(width:size,height:size)
-//        print("Ok")
-//        }
+
         self.menuView.firstWeekday = .Monday //.Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
         //monthLabel.font = UIFont.systemFontOfSize(CGFloat(15))
@@ -58,7 +48,6 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     override func viewWillAppear(animated: Bool) {
 //            var ad = UIApplication.sharedApplication().delegate as! AppDelegate
         
-//        calDisplay.reloadData()
         workDisplay.reloadData()
         
     }
@@ -72,34 +61,28 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     }
     
     
-    func collectionView(collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) ->CGSize{
-        let size = calDisplay.frame.size.width / 20
-        return CGSize(width:size,height:size)
-        
-//        NSLog("bbbbbbb")
-//        let size = calDisplay.frame.size.width / 10//7 - 1 return CGSizeMake(size,size)
-    }
+
     
     
 //---------------------------------------------------------------------------------コレクションビュー処理
-    // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            
-        let cell:dayCell = collectionView.dequeueReusableCellWithReuseIdentifier("calCell1", forIndexPath: indexPath) as! dayCell
-        //        cell.lblSample.text = "ラベル\(indexPath.row)";
-        //        cell.selectBeans.image = UIImage(named: "1.png")
-        return cell
-    }
-    
-    // セクションの数（とりあえず）
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 0
-    }
-    
-    // 表示するセルの数（とりあえず）
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+//    // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
+//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+//            
+//        let cell:dayCell = collectionView.dequeueReusableCellWithReuseIdentifier("calCell1", forIndexPath: indexPath) as! dayCell
+//        //        cell.lblSample.text = "ラベル\(indexPath.row)";
+//        //        cell.selectBeans.image = UIImage(named: "1.png")
+//        return cell
+//    }
+//    
+//    // セクションの数（とりあえず）
+//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+//        return 0
+//    }
+//    
+//    // 表示するセルの数（とりあえず）
+//    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 10
+//    }
     
     
     
@@ -134,7 +117,7 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
         
     }
     
-}
+
 
 
 
@@ -414,5 +397,6 @@ extension CalViewController {
         monthLabel.text = CVDate(date: date).globalDescription //スワイプで前月へ移動時に年月ラベルを前月に更新
     }
     
+}
 }
 
