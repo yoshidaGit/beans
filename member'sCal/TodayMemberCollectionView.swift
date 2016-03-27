@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayMemberCollectionView: NSObject,UICollectionViewDataSource {
+class TodayMemberCollectionView: NSObject,UICollectionViewDataSource,UICollectionViewDelegate {
     
     
     
