@@ -16,8 +16,8 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calDisplay.delegate = self
-        calDisplay.dataSource = self
+//        calDisplay.delegate = self
+//        calDisplay.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
 //----------------------------------------------------------------------------------コレクションビューセルのサイズ
 //        calDisplay.delegate = self
@@ -43,7 +43,7 @@ class CalViewController: UIViewController,UICollectionViewDelegateFlowLayout,UIC
         
         
         
-        calDisplay.reloadData()
+//        calDisplay.reloadData()
         workDisplay.reloadData()
         
     }
