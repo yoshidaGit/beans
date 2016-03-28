@@ -397,8 +397,8 @@ extension CVCalendarMonthContentViewController {
             default: break
             }
         }
-//スクロール時に新たな月に勝手にセレクションを移す必要はないのでコメントアウト
-//        updateSelection()
+//TODO: スクロール時に新たな月に勝手にセレクションを移す必要はないのでコメントアウトしたいが、第６週が表示されないので保留
+        updateSelection()
         updateLayoutIfNeeded()
         pageLoadingEnabled = true
         direction = .None
