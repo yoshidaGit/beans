@@ -15,6 +15,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var weekMonth: UIButton!
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
     
     var shouldShowDaysOut = true
@@ -22,13 +23,15 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     var selectedDay:DayView!
     
+    var WMtitle = ""//----------------week/month切替変数
+    
     // MARK: - Life cycle
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.menuView.firstWeekday = .Monday //.Sunday
+        self.menuView.firstWeekday = .Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
         //monthLabel.font = UIFont.systemFontOfSize(CGFloat(15))
         monthLabel.font = UIFont.boldSystemFontOfSize(CGFloat(15))
@@ -37,6 +40,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         //TODO: 今月以外の日にちをタップしてその月にスクロールしても、タップした日にちが選択されないので非表示にしておく。不具合解消したらON
         calendarView.changeDaysOutShowingState(true)
         shouldShowDaysOut = false
+        
+        WMtitle = "Week"//-----------------カレンダー表示のデフォルトを"Week"に
+        weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
         
     }
     
@@ -60,37 +66,13 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         menuView.commitMenuViewUpdate()
     }
     
-    
 
-    
-    
-//---------------------------------------------------------------------------------コレクションビュー処理
-//    // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//            
-//        let cell:dayCell = collectionView.dequeueReusableCellWithReuseIdentifier("calCell1", forIndexPath: indexPath) as! dayCell
-//        //        cell.lblSample.text = "ラベル\(indexPath.row)";
-//        //        cell.selectBeans.image = UIImage(named: "1.png")
-//        return cell
-//    }
-//    
-//    // セクションの数（とりあえず）
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        return 0
-//    }
-//    
-//    // 表示するセルの数（とりあえず）
-//    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-//    }
-    
-    
     
     
 //-----------------------------------------------------------------------------------------テーブルビュー処理
     //行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 10
     }
     
     //セルの内容
@@ -132,7 +114,7 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
     
     /// Required method to implement!
     func firstWeekday() -> Weekday {
-        return .Monday//.Sunday
+        return .Sunday
     }
     
     // MARK: Optional methods
@@ -335,6 +317,20 @@ extension CalViewController {
             shouldShowDaysOut = false
         }
     }
+    
+ //-------------------------------------------------------week/month統合
+    @IBAction func weekAndMonth(sender: UIButton) {
+        if WMtitle == "Week"{
+            calendarView.changeMode(.WeekView)
+            WMtitle = "Month"
+            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+        }else if WMtitle == "Month"{
+            calendarView.changeMode(.MonthView)
+            WMtitle = "Week"
+            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+        }
+    }
+    
     
     @IBAction func todayMonthView() {
         calendarView.toggleCurrentDayView()

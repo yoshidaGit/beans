@@ -17,9 +17,7 @@
 		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
 		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
 		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
-		5FCA8CDC1CA7E308007210D2 /* SelectMemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CDB1CA7E308007210D2 /* SelectMemberCollectionView.swift */; };
 		5FCA8CDE1CA7E50B007210D2 /* SelectMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */; };
-		5FCA8CE01CA7E75A007210D2 /* TodayMemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CDF1CA7E75A007210D2 /* TodayMemberCollectionView.swift */; };
 		5FCA8CE21CA7E834007210D2 /* TodayMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */; };
 		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
 		5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* beansCell.swift */; };
@@ -82,9 +80,7 @@
 		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
 		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
 		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
-		5FCA8CDB1CA7E308007210D2 /* SelectMemberCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMemberCollectionView.swift; sourceTree = "<group>"; };
 		5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMemberCell.swift; sourceTree = "<group>"; };
-		5FCA8CDF1CA7E75A007210D2 /* TodayMemberCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayMemberCollectionView.swift; sourceTree = "<group>"; };
 		5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayMemberCell.swift; sourceTree = "<group>"; };
 		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
 		5FE34C4B1C9C417600927B03 /* beansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beansCell.swift; sourceTree = "<group>"; };
@@ -174,9 +170,7 @@
 				5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
-				5FCA8CDF1CA7E75A007210D2 /* TodayMemberCollectionView.swift */,
 				5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */,
-				5FCA8CDB1CA7E308007210D2 /* SelectMemberCollectionView.swift */,
 				5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */,
 				EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */,
 				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
@@ -359,7 +353,6 @@
 				EC03A0371CA80922000C3966 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				EC03A03A1CA80922000C3966 /* CVCalendarTouchController.swift in Sources */,
 				EC03A0431CA80922000C3966 /* CVCalendarWeekday.swift in Sources */,
-				5FCA8CDC1CA7E308007210D2 /* SelectMemberCollectionView.swift in Sources */,
 				EC03A03F1CA80922000C3966 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				EC03A0471CA80922000C3966 /* CVScrollDirection.swift in Sources */,
 				5FCA8CDE1CA7E50B007210D2 /* SelectMemberCell.swift in Sources */,
@@ -390,7 +383,6 @@
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
 				5FCA8CE21CA7E834007210D2 /* TodayMemberCell.swift in Sources */,
 				EC03A0401CA80922000C3966 /* CVCalendarViewDelegate.swift in Sources */,
-				5FCA8CE01CA7E75A007210D2 /* TodayMemberCollectionView.swift in Sources */,
 				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
 				EC03A04D1CA80938000C3966 /* UIColor+Ext.swift in Sources */,
 				EC03A04B1CA80922000C3966 /* CVWeekdaySymbolType.swift in Sources */,
