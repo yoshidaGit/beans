@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 //------------------------------------------作業員テーブル
     var memberName:[String] = ["吉田","yoshida"]
-    var memberStart:[String] = ["08:01","08:02"]
-    var memberFinish:[String] = ["17:01","17:02"]
+    var memberStart:[String] = ["08:00","08:30"]
+    var memberFinish:[String] = ["17:00","17:30"]
     var memberBeans:[Int] = [0,1]
-    var memberDate:[String] = []
-    var memberGenba:[String] = []
+//    var memberDate:[String] = []
+//    var memberGenba:[String] = []
     var memberMon:[Bool] = [false,true]
     var memberTue:[Bool] = [false,true]
     var memberWen:[Bool] = [false,true]
@@ -31,9 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var memberSun:[Bool] = [false,true]
 
 //-------------------------------------------カレンダーテーブル
-    var calWorkName:[String] = ["蒔田","清水ヶ丘"]
+    var calGenbaName:[String] = ["蒔田","清水ヶ丘"]
     var calStartTime:[String] = ["08:10","終日"]
     var calFinishTime:[String] = ["17:10",""]
+    var calDay:[String] = ["2016-04-01","2016-04-02"]//日付の書式がよくわからないので適当
+    var calBeans:[Int] = [0,1]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
+    var calBeansStartTime:[String] = ["8:00","9:00"]//レコードごとに時間調整出来るようにする
+    var calBeansFinishTime:[String] = ["12:00","17:00"]//レコードごとに時間調整出来るようにする
+
+    
+    
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

@@ -33,8 +33,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
         self.menuView.firstWeekday = .Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
-        //monthLabel.font = UIFont.systemFontOfSize(CGFloat(15))
-        monthLabel.font = UIFont.boldSystemFontOfSize(CGFloat(15))
+        //monthLabel.font = UIFont.systemFontOfSize(CGFloat(19))
+        monthLabel.font = UIFont.boldSystemFontOfSize(CGFloat(25))
         monthLabel.text = CVDate(date: NSDate()).globalDescription
         
         //TODO: 今月以外の日にちをタップしてその月にスクロールしても、タップした日にちが選択されないので非表示にしておく。不具合解消したらON
@@ -95,7 +95,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
  
     
 //-----------------------------------------------------------------------------------------セルにデータをセット
-    func setCell(cell:WorkTableViewCell,atIndexPath indezPath:NSIndexPath){
+    func setCell(cell:WorkTableViewCell,atIndexPath indexPath:NSIndexPath){
         
     }
     

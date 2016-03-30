@@ -19,6 +19,8 @@
 		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
 		5FCA8CDE1CA7E50B007210D2 /* SelectMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */; };
 		5FCA8CE21CA7E834007210D2 /* TodayMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */; };
+		5FCA8CE41CAB48CF007210D2 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE31CAB48CF007210D2 /* 2.png */; };
+		5FCA8CE81CAB5D7B007210D2 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE71CAB5D7B007210D2 /* 3.png */; };
 		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
 		5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* beansCell.swift */; };
 		5FE34C4E1C9C43A800927B03 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE34C4D1C9C43A800927B03 /* 1.png */; };
@@ -82,10 +84,11 @@
 		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
 		5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMemberCell.swift; sourceTree = "<group>"; };
 		5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayMemberCell.swift; sourceTree = "<group>"; };
+		5FCA8CE31CAB48CF007210D2 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		5FCA8CE71CAB5D7B007210D2 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
 		5FE34C4B1C9C417600927B03 /* beansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beansCell.swift; sourceTree = "<group>"; };
 		5FE34C4D1C9C43A800927B03 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		5FF65AF41C9E50110039FDF4 /* dayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayCell.swift; sourceTree = "<group>"; };
 		5FF65B301C9E80C90039FDF4 /* CalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalViewController.swift; sourceTree = "<group>"; };
 		5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				33AE085A1B26DA82005A4A23 /* member'sCalTests */,
 				33AE08401B26DA81005A4A23 /* Products */,
 				5FE34C4D1C9C43A800927B03 /* 1.png */,
+				5FCA8CE31CAB48CF007210D2 /* 2.png */,
+				5FCA8CE71CAB5D7B007210D2 /* 3.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,7 +172,6 @@
 				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
 				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
 				5FE34C4B1C9C417600927B03 /* beansCell.swift */,
-				5FE34C4F1C9D47C000927B03 /* MyPlayground.playground */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
 				5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */,
@@ -326,11 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				33AE084D1B26DA81005A4A23 /* Main.storyboard in Resources */,
+				5FCA8CE41CAB48CF007210D2 /* 2.png in Resources */,
 				33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */,
 				33AE084F1B26DA81005A4A23 /* Images.xcassets in Resources */,
 				33D942F81B2D9D7A009D0E95 /* GenbaCell.xib in Resources */,
 				33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */,
 				5FE34C4E1C9C43A800927B03 /* 1.png in Resources */,
+				5FCA8CE81CAB5D7B007210D2 /* 3.png in Resources */,
 				33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
