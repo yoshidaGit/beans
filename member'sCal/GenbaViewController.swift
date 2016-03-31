@@ -16,8 +16,10 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     @IBOutlet weak var todayMember: UICollectionView!
     @IBOutlet weak var serectMember: UICollectionView!
     
+    var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,21 +28,33 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
         super.didReceiveMemoryWarning()
     }
     
+    let Beans:[UIImage] = [
+        UIImage(named:"1.png")!,
+        UIImage(named:"2.png")!,
+        UIImage(named:"3.png")!
+    ]
+    
+    
 
 //    ---------------------------------------------------------------------------------コレクションビュー処理
 //     セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 //        if( collectionView.tag == 1000 ) { return numberOfRows1() } if( collectionView.tag == 2000 ) { return numberOfRows2() }
         
-        if collectionView.tag == 1000{
+        switch collectionView.tag{
+        case 1000:
             let cell1:TodayMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("todayMember", forIndexPath: indexPath) as! TodayMemberCell
-            //        cell.lblSample.text = "ラベル\(indexPath.row)";
-            //        cell.selectBeans.image = UIImage(named: "1.png")
+            cell1.todayBeans.image = UIImage(named:"1png")
             return cell1
-        }else{
+            
+        case 2000:
             let cell2:SelectMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("selectBeans", forIndexPath: indexPath) as! SelectMemberCell
+            var number = ad.memberBeans[indexPath.row]
+            cell2.beansImage.image = Beans[number]
+            cell2.beansName.text = ad.memberName[indexPath.row]
             return cell2
-        }
+        default:return UICollectionViewCell()
+    }
     }
     
     // セクションの数（とりあえず）
@@ -55,10 +69,10 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     // 表示するセルの数（とりあえず）
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 1000{
-            return 10
+            return ad.calBeans.count
         }else{
-            return 20
+            return ad.calBeans.count
         }
-        }
+    }
     
 }

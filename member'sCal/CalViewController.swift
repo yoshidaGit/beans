@@ -25,6 +25,19 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     var WMtitle = ""//----------------week/month切替変数
     
+ //--------------------------------------------------------------------------appDelegateのレコードを取得する変数
+    var genbaName = []
+    var startTime = []
+    var finishTime = []
+    var day = []
+    var beans = []
+    var beansStartTime = []
+    var beansFinishTime = []
+ //---------------------------------------------------------------------------」
+    
+    
+    
+    
     // MARK: - Life cycle
     
     
@@ -43,6 +56,18 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         WMtitle = "Week"//-----------------カレンダー表示のデフォルトを"Week"に
         weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+        
+        
+        //-------------------------------------------------------------------appDelegateの変数を代入
+        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+        genbaName = ad.calGenbaName
+        startTime = ad.calStartTime
+        finishTime = ad.calFinishTime
+        day = ad.calDay
+        beans = ad.calBeans
+        beansStartTime = ad.calStartTime
+        beansFinishTime = ad.calFinishTime
+        
         
     }
     
@@ -69,6 +94,12 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
     
     
+    
+    
+    
+    
+    
+    
 //-----------------------------------------------------------------------------------------テーブルビュー処理
     //行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,7 +112,21 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         if indexPath.section == 0{
             
         let cell = tableView.dequeueReusableCellWithIdentifier("genbaCell") as! WorkTableViewCell
-        cell.start.text = "\(indexPath.row)"
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            cell.start.text = "\(indexPath.row)"
         return cell
     }
         return UITableViewCell()
@@ -93,6 +138,24 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
     }
  
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 //-----------------------------------------------------------------------------------------セルにデータをセット
     func setCell(cell:WorkTableViewCell,atIndexPath indexPath:NSIndexPath){

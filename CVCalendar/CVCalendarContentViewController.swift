@@ -45,7 +45,7 @@ public class CVCalendarContentViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
 
-        scrollView.contentSize = CGSizeMake(frame.width * 3, frame.height)
+        scrollView.contentSize = CGSizeMake(frame.width * 3, frame.height)//-------------------スクロールビューのサイズ　3倍
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.layer.masksToBounds = true

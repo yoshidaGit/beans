@@ -37,7 +37,7 @@ public final class CVCalendarMonthView: UIView {
     public var weeksOut: [[Int : [Int]]]?
     public var currentDay: Int?
     
-    public var potentialSize: CGSize {
+    public var potentialSize: CGSize {//------------------------------------------------------------------------------------ポテンシャルサイズ
         get {
             return CGSizeMake(bounds.width, CGFloat(weekViews.count) * weekViews[0].bounds.height + calendarView.appearance.spaceBetweenWeekViews! * CGFloat(weekViews.count))
         }

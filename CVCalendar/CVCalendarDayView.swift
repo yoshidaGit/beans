@@ -71,7 +71,7 @@ public final class CVCalendarDayView: UIView {
         if let size = weekView.calendarView.dayViewSize {
             let hSpace = weekView.calendarView.appearance.spaceBetweenDayViews!
             let x = (CGFloat(weekdayIndex - 1) * (size.width + hSpace)) + (hSpace/2)
-            super.init(frame: CGRectMake(x, 0, size.width, size.height))
+            super.init(frame: CGRectMake(x, 0, size.width, size.height))//--------------------------------今日の日付の●の大きさ
         } else {
             super.init(frame: CGRectZero)
         }

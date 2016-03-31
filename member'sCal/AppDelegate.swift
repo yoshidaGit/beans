@@ -39,7 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var calBeansStartTime:[String] = ["8:00","9:00"]//レコードごとに時間調整出来るようにする
     var calBeansFinishTime:[String] = ["12:00","17:00"]//レコードごとに時間調整出来るようにする
 
-    
+//-------------------------------------------ビーンズフィールド
+    let Beans:[UIImage] = [
+        UIImage(named:"1.png")!,
+        UIImage(named:"2.png")!,
+        UIImage(named:"3.png")!
+    ]
     
     
     
