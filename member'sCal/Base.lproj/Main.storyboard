@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1000" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-Jk-5Qt">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1000" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-Jk-5Qt">
                                 <rect key="frame" x="16" y="79" width="296" height="20"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -870,6 +870,7 @@
                             <constraint firstItem="DrP-OM-vE2" firstAttribute="centerX" secondItem="b8T-vf-B3z" secondAttribute="centerX" id="iLq-Jw-P2X"/>
                             <constraint firstItem="RZi-da-w2I" firstAttribute="leading" secondItem="b8T-vf-B3z" secondAttribute="leadingMargin" constant="53" id="ij5-EM-9nT"/>
                             <constraint firstItem="F6G-Uc-hWj" firstAttribute="leading" secondItem="b8T-vf-B3z" secondAttribute="leading" id="ise-B3-LSI"/>
+                            <constraint firstItem="RZi-da-w2I" firstAttribute="top" secondItem="b8T-vf-B3z" secondAttribute="topMargin" constant="30" id="jlb-pV-oF4"/>
                             <constraint firstItem="MmH-9T-mtu" firstAttribute="leading" secondItem="b8T-vf-B3z" secondAttribute="leading" id="kIc-W8-SUr"/>
                             <constraint firstItem="LDf-We-kMV" firstAttribute="leading" secondItem="b8T-vf-B3z" secondAttribute="leading" id="lTE-GB-eLD"/>
                             <constraint firstItem="MmH-9T-mtu" firstAttribute="leading" secondItem="F6G-Uc-hWj" secondAttribute="leading" id="nr3-ep-vrk"/>
@@ -885,6 +886,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="8vK-MU-xdW"/>
                                 <exclude reference="FvU-Gt-6NA"/>
                                 <exclude reference="ij5-EM-9nT"/>
                                 <exclude reference="D3d-P4-vmz"/>

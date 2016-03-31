@@ -121,7 +121,7 @@
 		EC03A02E1CA80922000C3966 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVSet.swift; path = CVCalendar/CVSet.swift; sourceTree = "<group>"; };
 		EC03A02F1CA80922000C3966 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVShape.swift; path = CVCalendar/CVShape.swift; sourceTree = "<group>"; };
 		EC03A0301CA80922000C3966 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVWeekdaySymbolType.swift; path = CVCalendar/CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
-		EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Ext.swift"; path = "member'sCal/UIColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */,
+				EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */,
 				EC03A0151CA80900000C3966 /* CVCalendar */,
 				33AE08411B26DA81005A4A23 /* member'sCal */,
 				33AE085A1B26DA82005A4A23 /* member'sCalTests */,
@@ -179,7 +180,6 @@
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
 				5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */,
 				5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */,
-				EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */,
 				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
 				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
 				33AE084E1B26DA81005A4A23 /* Images.xcassets */,
