@@ -146,11 +146,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     
-    
-    
-    
-    
-    
+
     
     
     
@@ -162,8 +158,24 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
     }
     
-}
 
+
+
+//------------------------------------------------------------------------------------------セグエ?    
+    override func prepareForSegue(segue:UIStoryboardSegue,sender:AnyObject?){
+        
+    }
+
+
+    @IBAction func returnCal(segue:UIStoryboardSegue){
+    
+    }
+
+
+
+
+
+}
 
 
 // MARK: - CVCalendarViewDelegate & CVCalendarMenuViewDelegate

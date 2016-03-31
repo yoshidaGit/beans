@@ -16,28 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
 //------------------------------------------作業員テーブル
-    var memberName:[String] = ["吉田","yoshida"]
-    var memberStart:[String] = ["08:00","08:30"]
-    var memberFinish:[String] = ["17:00","17:30"]
-    var memberBeans:[Int] = [0,1]
+    var memberName:[String] = ["吉田","yoshida","sakonaka"]
+    var memberStart:[String] = ["08:00","08:30","09:30"]
+    var memberFinish:[String] = ["17:00","17:30","18:00"]
+    var memberBeans:[Int] = [2,0,1]
 //    var memberDate:[String] = []
 //    var memberGenba:[String] = []
-    var memberMon:[Bool] = [false,true]
-    var memberTue:[Bool] = [false,true]
-    var memberWen:[Bool] = [false,true]
-    var memberThu:[Bool] = [false,true]
-    var memberFri:[Bool] = [false,true]
-    var memberSta:[Bool] = [false,true]
-    var memberSun:[Bool] = [false,true]
+    var memberMon:[Bool] = [false,true,false]
+    var memberTue:[Bool] = [false,true,true]
+    var memberWen:[Bool] = [false,true,false]
+    var memberThu:[Bool] = [false,true,true]
+    var memberFri:[Bool] = [false,true,false]
+    var memberSta:[Bool] = [false,true,true]
+    var memberSun:[Bool] = [false,true,false]
 
 //-------------------------------------------カレンダーテーブル
-    var calGenbaName:[String] = ["蒔田","清水ヶ丘"]
-    var calStartTime:[String] = ["08:10","終日"]
-    var calFinishTime:[String] = ["17:10",""]
-    var calDay:[String] = ["2016-04-01","2016-04-02"]//日付の書式がよくわからないので適当
-    var calBeans:[Int] = [0,1]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
-    var calBeansStartTime:[String] = ["8:00","9:00"]//レコードごとに時間調整出来るようにする
-    var calBeansFinishTime:[String] = ["12:00","17:00"]//レコードごとに時間調整出来るようにする
+    var calGenbaName:[String] = ["蒔田","清水ヶ丘","蒔田"]
+    var calStartTime:[String] = ["08:00","終日","08:30"]
+    var calFinishTime:[String] = ["17:30","","22:00"]
+    var calDay:[String] = ["2016-04-01","2016-04-02","2016-04-01"]//日付の書式がよくわからないので適当
+    var calBeans:[Int] = [2,1,0]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
+    var calBeansStartTime:[String] = ["08:00","09:00","09:00"]//レコードごとに時間調整出来るようにする
+    var calBeansFinishTime:[String] = ["12:00","17:00","18:00"]//レコードごとに時間調整出来るようにする
 
 //-------------------------------------------ビーンズフィールド
     let Beans:[UIImage] = [
