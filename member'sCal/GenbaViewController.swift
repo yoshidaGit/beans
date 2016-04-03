@@ -18,7 +18,9 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
     var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
-    
+    var memberStack:[Int]? = []//トゥデイメンバーのいれもの
+    var memberSelect = Dictionary<String,Int>()
+//    var memberSelect:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,36 +39,23 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
 
 //    ---------------------------------------------------------------------------------コレクションビュー処理
-//     セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-////        if( collectionView.tag == 1000 ) { return numberOfRows1() } if( collectionView.tag == 2000 ) { return numberOfRows2() }
-//        
-//        switch collectionView.tag{
-//        case 1000:
-//            let cell1:TodayMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("todayMember", forIndexPath: indexPath) as! TodayMemberCell
-//            cell1.todayBeans.image = UIImage(named:"1png")
-//            return cell1
-//            
-//        case 2000:
-//            let cell2:SelectMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("selectBeans", forIndexPath: indexPath) as! SelectMemberCell
-//            var number = ad.memberBeans[indexPath.row]
-//            cell2.beansImage.image = Beans[number]
-//            cell2.beansName.text = ad.memberName[indexPath.row]
-//            return cell2
-//        default:return UICollectionViewCell()
-//    }
-//    }
-    
-    
+//-------------------------------------------------------------------------------------セルに描画するもの
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if collectionView.tag == 1000{
             var cell1:TodayMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("todayMember", forIndexPath: indexPath) as! TodayMemberCell
-            cell1.todayBeans.image = Beans[0]//Beans[indexPath.row]
+//            cell1.todayBeans.image = Beans[memberStack![indexPath.row]]
+            
+ //           cell1.todayBeans.image =
+            
+            
+            
+            
             return cell1
         }else if (collectionView.tag == 2000){
             let cell2:SelectMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("selectBeans", forIndexPath: indexPath) as! SelectMemberCell
-                var number = ad.memberBeans[indexPath.row]
+                let number = ad.memberBeans[indexPath.row]
                 cell2.beansImage.image = Beans[number]
+                cell2.layer.cornerRadius = 4
                         cell2.beansName.text = ad.memberName[indexPath.row]
                         return cell2
         }
@@ -75,10 +64,69 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 
     
     
+//--------------------------------------------------------------------------------------複数のセルを選択する処理
+//--------------------------------------------------------------------------------------選択したとき
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        if collectionView.tag == 2000{
+            collectionView.allowsMultipleSelection = true
+            var cell = collectionView.cellForItemAtIndexPath(indexPath)
+           
+            if cell?.selected == true {
+
+                cell?.backgroundColor = UIColor.yanaginezu()
+//                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]
+                
+                memberStack?.append(ad.memberBeans[indexPath.row])
+                todayMember.reloadData()//todyaMemberリロード
+            }
+        }
+    }
+ 
+//---------------------------------------------------------------------------------------解除したとき
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        if collectionView.tag == 2000{
+            collectionView.allowsMultipleSelection = true
+            var cell = collectionView.cellForItemAtIndexPath(indexPath)
+            
+            if cell?.selected == false {
+//                memberSelect.append(indexPath.row)
+                cell?.backgroundColor = UIColor.clearColor()
+                if memberStack?.count == 1{//--------------------配列が0になるときとまだ残ってるときの処理を分岐（クラッシュ対策）
+                    memberStack?.removeAll()
+                }else{
+                memberStack?.removeAtIndex(ad.memberBeans[indexPath.row])
+                }
+//                if memberStack?.removeAtIndex(ad.memberBeans[indexPath.row]) == nil{
+//                    memberStack?.removeAll()
+//                }
+                todayMember.reloadData()
+            }
+        }
+    }
+    
+//    func memberSelect(select:Int) -> Int{
+//        
+//    }
+//    
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//---------------------------------------------------------------------------------------」ここまで
     
 
 
@@ -95,9 +143,9 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     // 表示するセルの数（とりあえず）
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 1000{
-            return 15
+            return (memberStack?.count)!
         }else{
-            return ad.calBeans.count
+            return ad.memberBeans.count
         }
     }
 }

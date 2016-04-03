@@ -22,6 +22,7 @@
 		5FCA8CE41CAB48CF007210D2 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE31CAB48CF007210D2 /* 2.png */; };
 		5FCA8CE81CAB5D7B007210D2 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE71CAB5D7B007210D2 /* 3.png */; };
 		5FCA8D5E1CAC926E007210D2 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */; };
+		5FCA8D601CB001CC007210D2 /* MemberPlus2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8D5F1CB001CC007210D2 /* MemberPlus2.swift */; };
 		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
 		5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* beansCell.swift */; };
 		5FE34C4E1C9C43A800927B03 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE34C4D1C9C43A800927B03 /* 1.png */; };
@@ -88,6 +89,7 @@
 		5FCA8CE31CAB48CF007210D2 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		5FCA8CE71CAB5D7B007210D2 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		5FCA8D5F1CB001CC007210D2 /* MemberPlus2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus2.swift; sourceTree = "<group>"; };
 		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
 		5FE34C4B1C9C417600927B03 /* beansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beansCell.swift; sourceTree = "<group>"; };
 		5FE34C4D1C9C43A800927B03 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				5FF65B6C1C9ED95D0039FDF4 /* WorkTableViewCell.swift */,
 				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
 				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
+				5FCA8D5F1CB001CC007210D2 /* MemberPlus2.swift */,
 				5FE34C4B1C9C417600927B03 /* beansCell.swift */,
 				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
@@ -368,6 +371,7 @@
 				5FF65B311C9E80C90039FDF4 /* CalViewController.swift in Sources */,
 				EC03A0491CA80922000C3966 /* CVSet.swift in Sources */,
 				EC03A0481CA80922000C3966 /* CVSelectionType.swift in Sources */,
+				5FCA8D601CB001CC007210D2 /* MemberPlus2.swift in Sources */,
 				5FF65B6D1C9ED95D0039FDF4 /* WorkTableViewCell.swift in Sources */,
 				EC03A0411CA80922000C3966 /* CVCalendarViewPresentationMode.swift in Sources */,
 				EC03A0361CA80922000C3966 /* CVCalendarMenuView.swift in Sources */,

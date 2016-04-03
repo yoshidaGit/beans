@@ -29,6 +29,10 @@ extension UIColor {
         return hexStr("6b3f31", alpha: 1.0)
     }
     
+    class func yanaginezu() -> UIColor{
+        return hexStr("c8d5bb",alpha:  1.0)
+    }
+    
     
     class func hexStr (var hexStr : NSString, let alpha : CGFloat) -> UIColor {
         hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
