@@ -19,7 +19,8 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
     var memberStack:[Int]? = []//トゥデイメンバーのいれもの
-    var memberSelect = Dictionary<String,Int>()
+//    var memberSelect = Dictionary<String,Int>()
+    var menberSelected:NSMutableArray = NSMutableArray()
 //    var memberSelect:[Int] = []
     
     override func viewDidLoad() {
@@ -43,7 +44,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if collectionView.tag == 1000{
             var cell1:TodayMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("todayMember", forIndexPath: indexPath) as! TodayMemberCell
-//            cell1.todayBeans.image = Beans[memberStack![indexPath.row]]
+            cell1.todayBeans.image = Beans[memberStack![indexPath.row]]
             
  //           cell1.todayBeans.image =
             
@@ -74,10 +75,26 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
             if cell?.selected == true {
 
                 cell?.backgroundColor = UIColor.yanaginezu()
-//                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]
                 
-                memberStack?.append(ad.memberBeans[indexPath.row])
+                
+                
+                
+//                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]
+ //               var hogeDic: Dictionary = ["name": "aaa", "num": "aa"]
+ //               memberStack?.append(ad.memberBeans[indexPath.row])
+//                var hogeDic: Dictionary = ["name":"\(ad.memberName[indexPath.row])", "num": "\(ad.memberBeans[indexPath.row])"]
+  //              menberSelected.addObject(hogeDic)
+ //               memberSelect?.addObject(ad.memberName[indexPath.row],ad.memberBeans[indexPath.row])
                 todayMember.reloadData()//todyaMemberリロード
+  //              var test =  menberSelected[indexPath.row]
+                
+            print("menberSelected?.count\(menberSelected.count)")
+                
+//                var testname = test["name"]
+                
+                
+                
+  //              print("menberSelected?.count\(testname)")
             }
         }
     }

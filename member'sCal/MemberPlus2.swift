@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemberPlus2: UIViewController {
+class MemberPlus2: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     @IBOutlet weak var memberPlusTitle: UILabel!
     @IBOutlet weak var startTime: UIButton!
     @IBOutlet weak var finishTime: UIButton!
@@ -25,6 +25,7 @@ class MemberPlus2: UIViewController {
     @IBOutlet weak var sta: UIButton!
     @IBOutlet weak var sun: UIButton!
     
+    @IBOutlet weak var beansImage: UIImageView!
     @IBOutlet weak var collectView: UICollectionView!
     
     let Beans:[UIImage] = [
@@ -41,7 +42,7 @@ class MemberPlus2: UIViewController {
     //     df.dateFormat = "HH:mm"
     var dateString = "08:00"//-------------------------------------------------------時間設定用変数
     var name = ""//-------------------------------------------------------------名前
-    var beans = 0//-------------------------------------------------------------ビーンズ
+    var beans:Int?//-------------------------------------------------------------ビーンズ
     //    var weekSwitch = ""//-------------------------------------------------------曜日選択用変数
     var monDay = false
     var tueDay = false
@@ -149,10 +150,13 @@ class MemberPlus2: UIViewController {
     //--------------------------------------------------------------------------------SAVE処理-----とりあえずAppDelegateへ
     func allSave(){
         let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+        if beans == nil{
+            beans = 0
+        }
         ad.memberName.append(name)
         ad.memberStart.append(timeStart)
         ad.memberFinish.append(timeFinish)
-        ad.memberBeans.append(beans)
+        ad.memberBeans.append((beans)!)
         ad.memberMon.append(monDay)
         ad.memberTue.append(tueDay)
         ad.memberWen.append(wenDay)
@@ -192,7 +196,7 @@ class MemberPlus2: UIViewController {
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
         })
-        self.performSegueWithIdentifier("calGo", sender: nil)
+        self.performSegueWithIdentifier("calGo2", sender: nil)
     }
     
     func okPlus(){
@@ -213,17 +217,21 @@ class MemberPlus2: UIViewController {
 //        Plus.didMoveToParentViewController(self)
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.view.frame = CGRectMake(0,-(self.view.frame.height / 2),self.view.frame.width,self.view.frame.height)
-            
         })
-        
-        
+        self.performSegueWithIdentifier("backRemake", sender: nil)
     }
-    
     
     @IBAction func saveAlert(sender: UIBarButtonItem) {
         alert()
     }
-
+    
+    
+  
+    
+    
+    
+    
+    
     
     
     
@@ -232,7 +240,8 @@ class MemberPlus2: UIViewController {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell:beansCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell1", forIndexPath: indexPath) as! beansCell
-            //        cell.lblSample.text = "ラベル\(indexPath.row)";
+       
+            cell.layer.cornerRadius = 4
             cell.selectBeans.image = Beans[indexPath.row]
             return cell
         }
@@ -253,7 +262,30 @@ class MemberPlus2: UIViewController {
     func collectionView(collectionView:UICollectionView,didSelectItemAtIndexPath indexPath:NSIndexPath){
         beans = indexPath.row
         print(beans)
-        
+        self.beansImage.image = Beans[indexPath.row]// as UIImage
+        beansImage.alpha = 0
+        UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+            self.beansImage.alpha = 1.0
+        })
+        self.beansImage.frame = CGRectMake(41,106,0,0)
+        //        self.beansImage.alpha = 1.0
+        UIImageView.animateWithDuration(0.2,
+                                        delay:0,
+                                        // バネの弾性力. 小さいほど弾性力は大きくなる.
+            usingSpringWithDamping: 0.3,
+            // 初速度.
+            initialSpringVelocity: 5,
+            options: [],
+            animations: { () -> Void in
+                self.beansImage.frame = CGRectMake(16,81,50,50)
+        }) { (Bool) -> Void in
+        }
+        var cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell!.alpha = 0.1
+        UICollectionViewCell.animateWithDuration(0.8, animations: { () -> Void in
+            cell!.alpha = 1.0
+            print(self.beans!)
+        })
     }
     
     
@@ -278,6 +310,11 @@ class MemberPlus2: UIViewController {
         }else{
             weekOK.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             weekOK.backgroundColor = UIColor.brownColor()
+            weekOK.alpha = 0.1
+            UIButton.animateWithDuration(0.5, animations: { () -> Void in
+                weekOK.alpha = 1.0
+            })
+            
         }
     }
     
