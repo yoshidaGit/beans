@@ -18,10 +18,12 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
     var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
-    var memberStack:[Int]? = []//トゥデイメンバーのいれもの
-//    var memberSelect = Dictionary<String,Int>()
-    var menberSelected:NSMutableArray = NSMutableArray()
-//    var memberSelect:[Int] = []
+    var memberStack:[Int]? = []//トゥデイメンバーのいれもの、選択された順番を保持
+    var checkMark = Dictionary<Int,Bool>()//チェックマーク判定用
+//    var memberSelected:NSMutableArray = NSMutableArray()
+    var memberSelect = Dictionary<String,Int>()
+    var key:[String]? = []
+    var value:[Int]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,22 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
         UIImage(named:"3.png")!
     ]
     
+ 
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 //    ---------------------------------------------------------------------------------コレクションビュー処理
@@ -44,11 +62,8 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if collectionView.tag == 1000{
             var cell1:TodayMemberCell = collectionView.dequeueReusableCellWithReuseIdentifier("todayMember", forIndexPath: indexPath) as! TodayMemberCell
-            cell1.todayBeans.image = Beans[memberStack![indexPath.row]]
             
- //           cell1.todayBeans.image =
-            
-            
+                     cell1.todayBeans.image = Beans[ad.memberBeans[(memberStack?[indexPath.row])!]]
             
             
             return cell1
@@ -57,15 +72,24 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                 let number = ad.memberBeans[indexPath.row]
                 cell2.beansImage.image = Beans[number]
                 cell2.layer.cornerRadius = 4
-                        cell2.beansName.text = ad.memberName[indexPath.row]
-                        return cell2
+                cell2.beansName.text = ad.memberName[indexPath.row]
+            if checkMark.isEmpty != false{
+                if checkMark[indexPath.row] == true{
+                    cell2.chack.hidden = false
+                }else{
+                    cell2.chack.hidden = true
+                }
+            }
+
+            return cell2
+
         }
         return UICollectionViewCell()
     }
 
     
     
-//--------------------------------------------------------------------------------------複数のセルを選択する処理
+//-------------------------------------------------------------------------------------複数のセルを選択する処理
 //--------------------------------------------------------------------------------------選択したとき
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         if collectionView.tag == 2000{
@@ -73,11 +97,28 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
             var cell = collectionView.cellForItemAtIndexPath(indexPath)
            
             if cell?.selected == true {
+                    cell!.alpha = 0
+//                cell?.chack.hidden = false
 
-                cell?.backgroundColor = UIColor.yanaginezu()
                 
-                
-                
+                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]//辞書に名前とナンバーを保持（テスト）
+                for (key,val) in memberSelect{
+                    print("memberName[\(key)] =  \(val)")
+                    
+                checkMark[indexPath.row] = true//辞書にcollectionViewのインデックス番号ととチェック判定用ブールを保持
+                print(checkMark.count)
+                    
+                }
+                memberStack?.append(indexPath.row)
+                print(memberStack?.count)
+                UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+                    cell!.alpha = 1.0
+                }) { (Bool) -> Void in
+                    cell?.reloadInputViews()
+ 
+                }
+                todayMember.reloadData()
+//                serectMember.reloadData()
                 
 //                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]
  //               var hogeDic: Dictionary = ["name": "aaa", "num": "aa"]
@@ -85,10 +126,11 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 //                var hogeDic: Dictionary = ["name":"\(ad.memberName[indexPath.row])", "num": "\(ad.memberBeans[indexPath.row])"]
   //              menberSelected.addObject(hogeDic)
  //               memberSelect?.addObject(ad.memberName[indexPath.row],ad.memberBeans[indexPath.row])
-                todayMember.reloadData()//todyaMemberリロード
+//                todayMember.reloadData()//todyaMemberリロード
+ //               serectMember.reloadData()
   //              var test =  menberSelected[indexPath.row]
                 
-            print("menberSelected?.count\(menberSelected.count)")
+//            print("memberSelect?.count\(memberSelect.count)")
                 
 //                var testname = test["name"]
                 
@@ -104,27 +146,28 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
         if collectionView.tag == 2000{
             collectionView.allowsMultipleSelection = true
             var cell = collectionView.cellForItemAtIndexPath(indexPath)
-            
+    
             if cell?.selected == false {
-//                memberSelect.append(indexPath.row)
-                cell?.backgroundColor = UIColor.clearColor()
-                if memberStack?.count == 1{//--------------------配列が0になるときとまだ残ってるときの処理を分岐（クラッシュ対策）
-                    memberStack?.removeAll()
-                }else{
-                memberStack?.removeAtIndex(ad.memberBeans[indexPath.row])
-                }
-//                if memberStack?.removeAtIndex(ad.memberBeans[indexPath.row]) == nil{
-//                    memberStack?.removeAll()
-//                }
-                todayMember.reloadData()
+                memberStack?.removeAtIndex((memberStack?.indexOf(indexPath.row))!)//memberStackの配列（要素：選択されたセル、Index:選択された順番)を取り除く
+                    print(memberStack?.count)
+                
+                checkMark.removeValueForKey(indexPath.row)//チェックマークを削除
+                print(checkMark.count)
+                
+                cell?.alpha = 0.5
+                UIImageView.animateWithDuration(0.1, animations: { () -> Void in
+                    cell!.alpha = 1.0
+                })
             }
-        }
+                cell?.reloadInputViews()
+                todayMember.reloadData()
+//               serectMember.reloadData()
+            }
+
     }
     
-//    func memberSelect(select:Int) -> Int{
-//        
-//    }
-//    
+
+    
     
     
     

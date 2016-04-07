@@ -11,6 +11,7 @@ import UIKit
 class SelectMemberCell: UICollectionViewCell {
     @IBOutlet weak var beansImage: UIImageView!
     @IBOutlet weak var beansName: UILabel!
+    @IBOutlet weak var chack: UIImageView!
     
 
 }
