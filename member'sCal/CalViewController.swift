@@ -25,6 +25,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     var WMtitle = ""//----------------week/month切替変数
     
+    var calIndex = 0//インデックス保持用
+    
+    
  //--------------------------------------------------------------------------appDelegateのレコードを取得する変数
     var genbaName = []
     var startTime = []
@@ -36,7 +39,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
  //---------------------------------------------------------------------------」
     
     
-    
+    let ad = UIApplication.sharedApplication().delegate as! AppDelegate
     
     // MARK: - Life cycle
     
@@ -60,14 +63,14 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         //-------------------------------------------------------------------appDelegateの変数を代入
         let ad = UIApplication.sharedApplication().delegate as! AppDelegate
-        genbaName = ad.calGenbaName
+       genbaName = ad.calGenbaName
         startTime = ad.calStartTime
         finishTime = ad.calFinishTime
-        day = ad.calDay
-        beans = ad.calBeans
-        beansStartTime = ad.calStartTime
-        beansFinishTime = ad.calFinishTime
-        
+       day = ad.calDay
+//
+//        beansStartTime = ad.calStartTime
+//        beansFinishTime = ad.calFinishTime
+//        
         
     }
     
@@ -103,7 +106,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 //-----------------------------------------------------------------------------------------テーブルビュー処理
     //行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return genbaName.count
     }
     
     //セルの内容
@@ -112,21 +115,11 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         if indexPath.section == 0{
             
         let cell = tableView.dequeueReusableCellWithIdentifier("genbaCell") as! WorkTableViewCell
-        
+        cell.start.text = startTime[indexPath.row] as! String
+        cell.finish.text = finishTime[indexPath.row] as! String
+        cell.workName.text = genbaName[indexPath.row] as! String
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            cell.start.text = "\(indexPath.row)"
+
         return cell
     }
         return UITableViewCell()
@@ -134,25 +127,12 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
     
     //行を選択された時に呼ばれる
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        ad.ADIndex = indexPath.row//アップデリゲートに保存
     }
  
 
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
 //-----------------------------------------------------------------------------------------セルにデータをセット
     func setCell(cell:WorkTableViewCell,atIndexPath indexPath:NSIndexPath){
         
@@ -161,14 +141,54 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
 
 
-//------------------------------------------------------------------------------------------セグエ?    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//------------------------------------------------------------------------------------------セグエ
     override func prepareForSegue(segue:UIStoryboardSegue,sender:AnyObject?){
         
+        
+        
+//        if (segue.identifier == "GenbaDetailGo"){
+//          ad.ADIndex = calIndex//アップデリゲートに保存
+//            print(ad.ADIndex)
+//        var GVC = segue.destinationViewController as! GenbaViewController
+//            GVC.genIndex = calIndex
+ //           print(calIndex)
+//        GVC.workName?.text = genbaName[calIndex] as! String
+//        GVC.startTime?.text = startTime[calIndex] as! String
+//        GVC.finishTime?.text = finishTime[calIndex] as! String
+//        }
     }
 
-
-    @IBAction func returnCal(segue:UIStoryboardSegue){
+    @IBAction func returnCal(segue:UIStoryboardSegue){//GenbaViewから戻ってくるとき
+//        let GVC = segue.sourceViewController as! GenbaViewController
+//        calIndex = GVC.genIndex
+//        let VC = GenbaViewController()
+//        var memberInThisGenba = VC.memberSelect
+//        var val:[String] = []
+//        ad.calBeansName.append
+//        for (x,value) in memberInThisGenba {
+//            val.append(value)
+//        }
     
+    }
+    
+    @IBAction func returnCalCancell(segue:UIStoryboardSegue){//genbaBiewからキャンセルしてきたとき
+        let GVC = segue.sourceViewController as! GenbaViewController
+        calIndex = GVC.genIndex
     }
 
 
@@ -176,6 +196,24 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // MARK: - CVCalendarViewDelegate & CVCalendarMenuViewDelegate

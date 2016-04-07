@@ -30,3 +30,7 @@ extension Array {
     }
 }
 print(hairetu!.indexOfAll("きんとん"))//でけました！
+
+var test = [1:"きなこ",3:"くり",2:"きんとん"]
+var val = test.values
+print(val)

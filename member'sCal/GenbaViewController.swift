@@ -21,9 +21,11 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     var memberStack:[Int]? = []//トゥデイメンバーのいれもの、選択された順番を保持
     var checkMark = Dictionary<Int,Bool>()//チェックマーク判定用
 //    var memberSelected:NSMutableArray = NSMutableArray()
-    var memberSelect = Dictionary<String,Int>()
-    var key:[String]? = []
-    var value:[Int]? = []
+    var memberSelect = Dictionary<Int,String>()
+//    var key:[String]? = []
+//    var value:[Int]? = []
+    
+    var genIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+
     }
     
     let Beans:[UIImage] = [
@@ -40,7 +43,14 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     ]
     
  
-    
+    override func viewWillAppear(animated: Bool) {
+        genIndex = ad.ADIndex
+        print(genIndex)
+        workName.text = ad.calGenbaName[genIndex]
+        startTime.text = ad.calStartTime[genIndex]
+        finishTime.text = ad.calFinishTime[genIndex]
+        //genIndex = ad.ADIndex
+    }
     
     
     
@@ -100,8 +110,8 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                     cell!.alpha = 0
 //                cell?.chack.hidden = false
 
-                
-                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]//辞書に名前とナンバーを保持（テスト）
+                memberSelect[indexPath.row] = ad.memberName[indexPath.row]
+               // memberSelect[ad.memberName[indexPath.row]] = indexPath.row//インデックスと名前を保持（テスト）
                 for (key,val) in memberSelect{
                     print("memberName[\(key)] =  \(val)")
                     
@@ -112,7 +122,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                 memberStack?.append(indexPath.row)
                 print(memberStack?.count)
                 UIImageView.animateWithDuration(0.5, animations: { () -> Void in
-                    cell!.alpha = 1.0
+                    cell!.alpha = 0.7
                 }) { (Bool) -> Void in
                     cell?.reloadInputViews()
  
@@ -135,7 +145,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 //                var testname = test["name"]
                 
                 
-                
+                print(genIndex)
   //              print("menberSelected?.count\(testname)")
             }
         }
@@ -148,6 +158,11 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
             var cell = collectionView.cellForItemAtIndexPath(indexPath)
     
             if cell?.selected == false {
+                
+                memberSelect.removeValueForKey(indexPath.row)//メンバーセレクトを削除
+                print(memberSelect.count)
+                
+                
                 memberStack?.removeAtIndex((memberStack?.indexOf(indexPath.row))!)//memberStackの配列（要素：選択されたセル、Index:選択された順番)を取り除く
                     print(memberStack?.count)
                 
@@ -166,30 +181,32 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 
     }
     
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 //---------------------------------------------------------------------------------------」ここまで
     
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // セクションの数（とりあえず）
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -208,4 +225,54 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
             return ad.memberBeans.count
         }
     }
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ //-------------------------------------------------------------------------------------セーブ＆セグエ
+    @IBAction func Saveaction(sender: UIBarButtonItem) {
+        allSave()
+    }
+    
+    func allSave(){
+        if workName.text == nil{
+            workName.text = ""
+        }
+        ad.calGenbaName[genIndex] = workName.text!
+        ad.calStartTime[genIndex] = startTime.text!
+        ad.calFinishTime[genIndex] = finishTime.text!
+        
+        var member:[String] = []
+        for (key,value) in memberSelect{
+ //           memmber.append(value)
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
