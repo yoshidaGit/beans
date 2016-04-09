@@ -444,7 +444,7 @@ extension CalViewController {
             self.beansSelectImage?.frame = CGRectMake(0,120,self.view.frame.width,100)
         })//{ (Bool) -> Void in
 //        }
-
+//ここできない
         }else if WMtitle == "Month"{
             calendarView.changeMode(.MonthView)
             WMtitle = "Week"
