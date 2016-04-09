@@ -17,6 +17,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var weekMonth: UIButton!
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
+    @IBOutlet var beansSelectImage: UIImageView!
+
     
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -46,6 +48,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        beansSelectImage.image = UIImage(named:"1.png")
 
         self.menuView.firstWeekday = .Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
@@ -437,11 +440,24 @@ extension CalViewController {
             calendarView.changeMode(.WeekView)
             WMtitle = "Month"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+            self.beansSelectImage?.frame = CGRectMake(0,120,self.view.frame.width,100)
+        })//{ (Bool) -> Void in
+//        }
+
         }else if WMtitle == "Month"{
             calendarView.changeMode(.MonthView)
             WMtitle = "Week"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+                self.beansSelectImage?.bounds = CGRectMake(16,377,self.view.frame.width,0)
+            }){ (Bool) -> Void in
+            }
+
         }
+        
+        
+        
     }
     
     
