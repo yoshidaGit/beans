@@ -83,13 +83,18 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                 cell2.beansImage.image = Beans[number]
                 cell2.layer.cornerRadius = 4
                 cell2.beansName.text = ad.memberName[indexPath.row]
-            if checkMark.isEmpty != false{
-                if checkMark[indexPath.row] == true{
+            
+            //if checkMark.isEmpty != true{
+            print("check\(checkMark[indexPath.row])")
+                if checkMark[indexPath.row] == true{ checkMark[indexPath.row] = false//辞書にcollectionViewのインデックス番号ととチェック判定用ブールを保持 }else{ checkMark[indexPath.row] = true //辞書にcollectionViewのインデックス番号ととチェック判定用ブールを保持 }
+                //if checkMark[indexPath.row] == true{
+                    print("true")
                     cell2.chack.hidden = false
                 }else{
                     cell2.chack.hidden = true
+                    print("false")
                 }
-            }
+           // }
 
             return cell2
 
@@ -106,9 +111,9 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
             collectionView.allowsMultipleSelection = true
             var cell = collectionView.cellForItemAtIndexPath(indexPath)
            
-            if cell?.selected == true {
+//            if cell?.selected == true {
                     cell!.alpha = 0
-//                cell?.chack.hidden = false
+
 
                 memberSelect[indexPath.row] = ad.memberName[indexPath.row]
                // memberSelect[ad.memberName[indexPath.row]] = indexPath.row//インデックスと名前を保持（テスト）
@@ -116,6 +121,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                     print("memberName[\(key)] =  \(val)")
                     
                 checkMark[indexPath.row] = true//辞書にcollectionViewのインデックス番号ととチェック判定用ブールを保持
+                    print(checkMark[indexPath.row])
                 print(checkMark.count)
                     
                 }
@@ -124,12 +130,12 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                 UIImageView.animateWithDuration(0.5, animations: { () -> Void in
                     cell!.alpha = 0.7
                 }) { (Bool) -> Void in
-                    cell?.reloadInputViews()
+                   // cell?.reloadInputViews()
  
                 }
                 todayMember.reloadData()
 //                serectMember.reloadData()
-                
+                cell?.selected = true
 //                memberSelect[ad.memberName[indexPath.row]] = ad.memberBeans[indexPath.row]
  //               var hogeDic: Dictionary = ["name": "aaa", "num": "aa"]
  //               memberStack?.append(ad.memberBeans[indexPath.row])
@@ -147,7 +153,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
                 
                 print(genIndex)
   //              print("menberSelected?.count\(testname)")
-            }
+ //           }
         }
     }
  

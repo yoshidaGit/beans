@@ -17,6 +17,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var weekMonth: UIButton!
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
+    @IBOutlet weak var BeansSelectimage: UIImageView!
     
     var shouldShowDaysOut = true
     var animationFinished = true
@@ -92,6 +93,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
+//        calendarView.frame = CGRectMake(16,81,self.view.frame.width - 32,300)
+//        BeansSelectimage.frame = CGRectMake(16,150,self.view.frame.width - 32, 230)
+//        workDisplay.frame = CGRectMake(0,400,self.view.frame.size.width,150)
     }
     
 
@@ -433,16 +437,60 @@ extension CalViewController {
     
  //-------------------------------------------------------week/month統合
     @IBAction func weekAndMonth(sender: UIButton) {
+        var hensux = 0
+        var hensuy = 0
+        var hensuz = 0
         if WMtitle == "Week"{
             calendarView.changeMode(.WeekView)
             WMtitle = "Month"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            hensux = 50
+            hensuy = 300
+            hensuz = 50
+//            //アニメーション
+//            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+//                self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, 50)
+//            }) { (Bool) -> Void in
+//                // cell?.reloadInputViews()
+//                
+//            }
+            
         }else if WMtitle == "Month"{
             calendarView.changeMode(.MonthView)
             WMtitle = "Week"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            
+//            //アニメーション
+//            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+//                self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, 1)
+//            })
+            hensux = 1
+            hensuy = 160
+            hensuz = 280
         }
+        imageAnime(CGFloat(hensux),y: CGFloat(hensuy),z: CGFloat(hensuz))
     }
+    
+    func imageAnime(x:CGFloat,y:CGFloat,z:CGFloat){
+        UIImageView.animateWithDuration(0.5, animations: { () -> Void in
+            
+//            self.calendarView.frame = CGRectMake(16,81,self.view.frame.width - 32,z)
+//            self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, x)
+//            self.workDisplay.frame = CGRectMake(0,300,self.view.frame.width,y)
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     @IBAction func todayMonthView() {
