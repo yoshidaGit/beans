@@ -155,6 +155,7 @@ extension CVCalendarDayView {
         dayLabel!.text = String(date.day)
         dayLabel!.textAlignment = NSTextAlignment.Center
         dayLabel!.frame = bounds
+//        dayLabel.textColor = UIColor.whiteColor()//----------------------------------------------------これは全く変化なし
         
         var font = appearance.dayLabelWeekdayFont
         var color: UIColor?
@@ -168,6 +169,7 @@ extension CVCalendarDayView {
                 touchController.receiveTouchOnDayView(self)
                 calendarView.didSelectDayView(self)
             } else {
+   //                 color = UIColor.whiteColor()//-----------------------試しに追加
                 color = appearance.dayLabelPresentWeekdayTextColor
                 if appearance.dayLabelPresentWeekdayInitallyBold! {
                     font = appearance.dayLabelPresentWeekdayBoldFont
@@ -177,10 +179,12 @@ extension CVCalendarDayView {
             }
             
         } else {
+  //          color = UIColor.whiteColor()//-----------------------試しに追加
             color = appearance.dayLabelWeekdayInTextColor
         }
         
         if color != nil && font != nil {
+//            dayLabel.textColor = UIColor.whiteColor()//-----------------------------------------------------これは最初すべて白だが、選択すると黒になる
             dayLabel!.textColor = color!
             dayLabel!.font = font
         }
@@ -487,7 +491,8 @@ extension CVCalendarDayView {
                 font = appearance.dayLabelWeekdayFont
             }
             
-            dayLabel?.textColor = color
+            dayLabel?.textColor = color//--------------*ここをUIColor.whiteColor()にすると、選択したDayがずっと白のままになった
+
             dayLabel?.font = font
             
             moveDotMarkerBack(true, coloring: false)

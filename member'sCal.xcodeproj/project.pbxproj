@@ -17,14 +17,19 @@
 		33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */; };
 		33D942FC1B2DAFBF009D0E95 /* GenbaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */; };
 		33D943001B2DB023009D0E95 /* memberCenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D942FE1B2DB023009D0E95 /* memberCenter.xib */; };
+		5F7847A11CC35ABC00881634 /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7847A01CC35ABC00881634 /* plusButton.png */; };
+		5F7847A31CC3927500881634 /* GenbaMakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7847A21CC3927500881634 /* GenbaMakeViewController.swift */; };
+		5F81060F1CC4ED9200E09331 /* BeansEditTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81060E1CC4ED9200E09331 /* BeansEditTableView.swift */; };
+		5F8106111CC4F11800E09331 /* BeansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8106101CC4F11800E09331 /* BeansTableViewCell.swift */; };
+		5F8106131CC5EDB900E09331 /* BeansEditDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8106121CC5EDB900E09331 /* BeansEditDetail.swift */; };
 		5FCA8CDE1CA7E50B007210D2 /* SelectMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */; };
 		5FCA8CE21CA7E834007210D2 /* TodayMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */; };
 		5FCA8CE41CAB48CF007210D2 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE31CAB48CF007210D2 /* 2.png */; };
 		5FCA8CE81CAB5D7B007210D2 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8CE71CAB5D7B007210D2 /* 3.png */; };
-		5FCA8D5E1CAC926E007210D2 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */; };
 		5FCA8D601CB001CC007210D2 /* MemberPlus2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA8D5F1CB001CC007210D2 /* MemberPlus2.swift */; };
 		5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD876C1C9B7F3700988714 /* MemberPlus.swift */; };
 		5FDB518B1CB5371500B1B56F /* chack.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FDB518A1CB5371500B1B56F /* chack.png */; };
+		5FE176BE1CC8406400ACE921 /* non.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE176BD1CC8406400ACE921 /* non.png */; };
 		5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE34C4B1C9C417600927B03 /* beansCell.swift */; };
 		5FE34C4E1C9C43A800927B03 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE34C4D1C9C43A800927B03 /* 1.png */; };
 		5FF65AF51C9E50110039FDF4 /* dayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF65AF41C9E50110039FDF4 /* dayCell.swift */; };
@@ -57,7 +62,9 @@
 		EC03A0491CA80922000C3966 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03A02E1CA80922000C3966 /* CVSet.swift */; };
 		EC03A04A1CA80922000C3966 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03A02F1CA80922000C3966 /* CVShape.swift */; };
 		EC03A04B1CA80922000C3966 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03A0301CA80922000C3966 /* CVWeekdaySymbolType.swift */; };
-		EC03A04D1CA80938000C3966 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */; };
+		ECA739DF1CC53DC600B40154 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA739DD1CC53DC600B40154 /* UIColor+Ext.swift */; };
+		ECA739E01CC53DC600B40154 /* UIDatePickerCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA739DE1CC53DC600B40154 /* UIDatePickerCustom.swift */; };
+		ECA739E21CC53E3800B40154 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA739E11CC53E3800B40154 /* Array+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,14 +92,19 @@
 		33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaViewController.swift; sourceTree = "<group>"; };
 		33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenbaViewController.xib; sourceTree = "<group>"; };
 		33D942FE1B2DB023009D0E95 /* memberCenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = memberCenter.xib; sourceTree = "<group>"; };
+		5F7847A01CC35ABC00881634 /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
+		5F7847A21CC3927500881634 /* GenbaMakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenbaMakeViewController.swift; sourceTree = "<group>"; };
+		5F81060E1CC4ED9200E09331 /* BeansEditTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeansEditTableView.swift; sourceTree = "<group>"; };
+		5F8106101CC4F11800E09331 /* BeansTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeansTableViewCell.swift; sourceTree = "<group>"; };
+		5F8106121CC5EDB900E09331 /* BeansEditDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeansEditDetail.swift; sourceTree = "<group>"; };
 		5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMemberCell.swift; sourceTree = "<group>"; };
 		5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayMemberCell.swift; sourceTree = "<group>"; };
 		5FCA8CE31CAB48CF007210D2 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		5FCA8CE71CAB5D7B007210D2 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		5FCA8D5F1CB001CC007210D2 /* MemberPlus2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus2.swift; sourceTree = "<group>"; };
 		5FCD876C1C9B7F3700988714 /* MemberPlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberPlus.swift; sourceTree = "<group>"; };
 		5FDB518A1CB5371500B1B56F /* chack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chack.png; sourceTree = "<group>"; };
+		5FE176BD1CC8406400ACE921 /* non.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = non.png; sourceTree = "<group>"; };
 		5FE34C4B1C9C417600927B03 /* beansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beansCell.swift; sourceTree = "<group>"; };
 		5FE34C4D1C9C43A800927B03 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		5FF65AF41C9E50110039FDF4 /* dayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dayCell.swift; sourceTree = "<group>"; };
@@ -125,7 +137,9 @@
 		EC03A02E1CA80922000C3966 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVSet.swift; path = CVCalendar/CVSet.swift; sourceTree = "<group>"; };
 		EC03A02F1CA80922000C3966 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVShape.swift; path = CVCalendar/CVShape.swift; sourceTree = "<group>"; };
 		EC03A0301CA80922000C3966 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CVWeekdaySymbolType.swift; path = CVCalendar/CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
-		EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Ext.swift"; path = "member'sCal/UIColor+Ext.swift"; sourceTree = "<group>"; };
+		ECA739DD1CC53DC600B40154 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		ECA739DE1CC53DC600B40154 /* UIDatePickerCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDatePickerCustom.swift; sourceTree = "<group>"; };
+		ECA739E11CC53E3800B40154 /* Array+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +163,6 @@
 		33AE08361B26DA81005A4A23 = {
 			isa = PBXGroup;
 			children = (
-				5FCA8D5D1CAC926E007210D2 /* Array+Ext.swift */,
-				EC03A04C1CA80938000C3966 /* UIColor+Ext.swift */,
 				EC03A0151CA80900000C3966 /* CVCalendar */,
 				33AE08411B26DA81005A4A23 /* member'sCal */,
 				33AE085A1B26DA82005A4A23 /* member'sCalTests */,
@@ -159,6 +171,8 @@
 				5FCA8CE31CAB48CF007210D2 /* 2.png */,
 				5FCA8CE71CAB5D7B007210D2 /* 3.png */,
 				5FDB518A1CB5371500B1B56F /* chack.png */,
+				5F7847A01CC35ABC00881634 /* plusButton.png */,
+				5FE176BD1CC8406400ACE921 /* non.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +188,7 @@
 		33AE08411B26DA81005A4A23 /* member'sCal */ = {
 			isa = PBXGroup;
 			children = (
+				ECA739DC1CC53D0000B40154 /* Utility */,
 				33AE084B1B26DA81005A4A23 /* Main.storyboard */,
 				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
 				5FF65B301C9E80C90039FDF4 /* CalViewController.swift */,
@@ -188,6 +203,10 @@
 				5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */,
 				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
 				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
+				5F7847A21CC3927500881634 /* GenbaMakeViewController.swift */,
+				5F81060E1CC4ED9200E09331 /* BeansEditTableView.swift */,
+				5F8106121CC5EDB900E09331 /* BeansEditDetail.swift */,
+				5F8106101CC4F11800E09331 /* BeansTableViewCell.swift */,
 				33AE084E1B26DA81005A4A23 /* Images.xcassets */,
 				33AE08501B26DA82005A4A23 /* LaunchScreen.xib */,
 				33AE08461B26DA81005A4A23 /* member_sCal.xcdatamodeld */,
@@ -253,6 +272,16 @@
 				EC03A0301CA80922000C3966 /* CVWeekdaySymbolType.swift */,
 			);
 			name = CVCalendar;
+			sourceTree = "<group>";
+		};
+		ECA739DC1CC53D0000B40154 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				ECA739E11CC53E3800B40154 /* Array+Ext.swift */,
+				ECA739DD1CC53DC600B40154 /* UIColor+Ext.swift */,
+				ECA739DE1CC53DC600B40154 /* UIDatePickerCustom.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +368,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33AE084D1B26DA81005A4A23 /* Main.storyboard in Resources */,
+				5FE176BE1CC8406400ACE921 /* non.png in Resources */,
+				5F7847A11CC35ABC00881634 /* plusButton.png in Resources */,
 				5FCA8CE41CAB48CF007210D2 /* 2.png in Resources */,
 				33AE08521B26DA82005A4A23 /* LaunchScreen.xib in Resources */,
 				5FDB518B1CB5371500B1B56F /* chack.png in Resources */,
@@ -382,27 +413,32 @@
 				EC03A03C1CA80922000C3966 /* CVCalendarViewAnimator.swift in Sources */,
 				EC03A0331CA80922000C3966 /* CVCalendarDayView.swift in Sources */,
 				EC03A0441CA80922000C3966 /* CVCalendarWeekView.swift in Sources */,
+				ECA739E21CC53E3800B40154 /* Array+Ext.swift in Sources */,
 				EC03A0341CA80922000C3966 /* CVCalendarDayViewControlCoordinator.swift in Sources */,
 				EC03A0351CA80922000C3966 /* CVCalendarManager.swift in Sources */,
 				EC03A03B1CA80922000C3966 /* CVCalendarView.swift in Sources */,
 				33AE08481B26DA81005A4A23 /* member_sCal.xcdatamodeld in Sources */,
+				ECA739DF1CC53DC600B40154 /* UIColor+Ext.swift in Sources */,
 				EC03A0451CA80922000C3966 /* CVDate.swift in Sources */,
 				EC03A03D1CA80922000C3966 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				EC03A0421CA80922000C3966 /* CVCalendarWeekContentViewController.swift in Sources */,
 				EC03A0391CA80922000C3966 /* CVCalendarMonthView.swift in Sources */,
 				EC03A0461CA80922000C3966 /* CVRange.swift in Sources */,
 				5FF65AF51C9E50110039FDF4 /* dayCell.swift in Sources */,
+				5F8106111CC4F11800E09331 /* BeansTableViewCell.swift in Sources */,
 				EC03A0311CA80922000C3966 /* CVAuxiliaryView.swift in Sources */,
-				5FCA8D5E1CAC926E007210D2 /* Array+Ext.swift in Sources */,
+				ECA739E01CC53DC600B40154 /* UIDatePickerCustom.swift in Sources */,
+				5F81060F1CC4ED9200E09331 /* BeansEditTableView.swift in Sources */,
 				EC03A04A1CA80922000C3966 /* CVShape.swift in Sources */,
 				5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */,
 				5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */,
+				5F8106131CC5EDB900E09331 /* BeansEditDetail.swift in Sources */,
 				EC03A0321CA80922000C3966 /* CVCalendarContentViewController.swift in Sources */,
 				33AE08451B26DA81005A4A23 /* AppDelegate.swift in Sources */,
 				5FCA8CE21CA7E834007210D2 /* TodayMemberCell.swift in Sources */,
 				EC03A0401CA80922000C3966 /* CVCalendarViewDelegate.swift in Sources */,
 				33D942FB1B2DAFBF009D0E95 /* GenbaViewController.swift in Sources */,
-				EC03A04D1CA80938000C3966 /* UIColor+Ext.swift in Sources */,
+				5F7847A31CC3927500881634 /* GenbaMakeViewController.swift in Sources */,
 				EC03A04B1CA80922000C3966 /* CVWeekdaySymbolType.swift in Sources */,
 				EC03A03E1CA80922000C3966 /* CVCalendarViewAppearance.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class CalViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate {
     @IBOutlet weak var workDisplay: UITableView!
     
     // MARK: - Properties
@@ -17,14 +17,20 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var weekMonth: UIButton!
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
-    @IBOutlet weak var BeansSelectimage: UIImageView!
+    @IBOutlet weak var beansCollection: UICollectionView!
+    @IBOutlet weak var plusButton: UIImageView!
+   
+    @IBOutlet weak var addBeans: UIButton!
+
+    @IBOutlet weak var beansCollectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var addBeansTop: NSLayoutConstraint!
     
     var shouldShowDaysOut = true
     var animationFinished = true
     
     var selectedDay:DayView!
     
-    var WMtitle = ""//----------------week/month切替変数
+    var WMtitle = "Week"//----------------week/month切替変数 デフォルトがWeek
     
     var calIndex = 0//インデックス保持用
     
@@ -58,8 +64,10 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         calendarView.changeDaysOutShowingState(true)
         shouldShowDaysOut = false
         
-        WMtitle = "Week"//-----------------カレンダー表示のデフォルトを"Week"に
+
         weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+        
+        beansCollection.userInteractionEnabled = false//はじめはスクロールビューに触らせない
         
         
         //-------------------------------------------------------------------appDelegateの変数を代入
@@ -85,6 +93,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         workDisplay.reloadData()
         
+
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,12 +103,14 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
+        beansCollection.layer.cornerRadius = 5
 //        calendarView.frame = CGRectMake(16,81,self.view.frame.width - 32,300)
 //        BeansSelectimage.frame = CGRectMake(16,150,self.view.frame.width - 32, 230)
 //        workDisplay.frame = CGRectMake(0,400,self.view.frame.size.width,150)
     }
     
 
+ 
     
     
     
@@ -107,7 +119,12 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     
-//-----------------------------------------------------------------------------------------テーブルビュー処理
+    
+    
+    
+    
+    
+//-----------------------------------------------------------------------------------------------------------------テーブルビュー処理
     //行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return genbaName.count
@@ -117,13 +134,17 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell = UITableViewCell(style: .Default, reuseIdentifier: "genbaCell")
         if indexPath.section == 0{
+//            var daySelect = ad.calDay.indexOf(dayView.da
+//            if daySelect?.isEmpty == false{
+            
+            
             
         let cell = tableView.dequeueReusableCellWithIdentifier("genbaCell") as! WorkTableViewCell
         cell.start.text = startTime[indexPath.row] as! String
         cell.finish.text = finishTime[indexPath.row] as! String
         cell.workName.text = genbaName[indexPath.row] as! String
             
-
+        
         return cell
     }
         return UITableViewCell()
@@ -160,45 +181,202 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     
-//------------------------------------------------------------------------------------------セグエ
+//-----------------------------------------------------------------------------------------------------------------------セグエ
     override func prepareForSegue(segue:UIStoryboardSegue,sender:AnyObject?){
         
-        
-        
-//        if (segue.identifier == "GenbaDetailGo"){
-//          ad.ADIndex = calIndex//アップデリゲートに保存
-//            print(ad.ADIndex)
-//        var GVC = segue.destinationViewController as! GenbaViewController
-//            GVC.genIndex = calIndex
- //           print(calIndex)
-//        GVC.workName?.text = genbaName[calIndex] as! String
-//        GVC.startTime?.text = startTime[calIndex] as! String
-//        GVC.finishTime?.text = finishTime[calIndex] as! String
-//        }
+
     }
 
     @IBAction func returnCal(segue:UIStoryboardSegue){//GenbaViewから戻ってくるとき
-//        let GVC = segue.sourceViewController as! GenbaViewController
-//        calIndex = GVC.genIndex
-//        let VC = GenbaViewController()
-//        var memberInThisGenba = VC.memberSelect
-//        var val:[String] = []
-//        ad.calBeansName.append
-//        for (x,value) in memberInThisGenba {
-//            val.append(value)
-//        }
+
     
     }
     
     @IBAction func returnCalCancell(segue:UIStoryboardSegue){//genbaBiewからキャンセルしてきたとき
-        let GVC = segue.sourceViewController as! GenbaViewController
-        calIndex = GVC.genIndex
     }
 
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //--------------------------------------------------------------------------------------------------------------------collectionView処理
+    // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0{
+            let cell:beansCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell1", forIndexPath: indexPath) as! beansCell
+                    cell.layer.cornerRadius = 4
+           
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    // セクションの数（今回は1つだけです）
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    // 表示するセルの数
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    //セルをタップしたとき
+    func collectionView(collectionView:UICollectionView,didSelectItemAtIndexPath indexPath:NSIndexPath){
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
+    
+    
+ //------------------------------------------------------------------------------------------------------------------------プラスボタン
+    //ボタンタップ
+    @IBAction func genbaPlusgo(sender: AnyObject) {
+        self.plusButton.alpha = 0.2
+        UIButton.animateWithDuration(0.1, animations: { () -> Void in
+            self.plusButton.alpha = 1.0
+        })
+        self.performSegueWithIdentifier("GenbaMake", sender: nil)
+    }
+
+    //ボタンスワイプ
+    @IBAction func memberPlusGoRight(sender: AnyObject) {
+        UIButton.animateWithDuration(0.1, animations: { () -> Void in
+            self.plusButton.frame = CGRectMake(self.view.frame.width / 2 + 30,self.view.frame.height - 80,60,60)
+        })
+        self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
+    
+    }
+
+    @IBAction func memberPlusGoLeft(sender: AnyObject) {
+                    UIButton.animateWithDuration(0.1, animations: { () -> Void in
+                self.plusButton.frame = CGRectMake(self.view.frame.width / 2 - 60,self.view.frame.height - 80,60,60)
+            })
+            self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
+       
+        
+    }
+    
+
+    
+ 
+    
+    
+    
+    
+    
+    
+ //----------------------------------------------------------------------------------------------ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰビーンズ追加ボタン
+    @IBAction func addBeansButton(sender: UIButton) {
+        if WMtitle == "Week"{
+ //           calendarView.changeMode(.WeekView)
+            WMtitle = "Month"
+            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            addBeans.setTitle("Month Cal", forState: UIControlState.Normal)
+            beansCollection.userInteractionEnabled = true
+                        //アニメーション
+
+            UIScrollView.animateWithDuration(0.2,
+//                                       delay: 0,
+//                                       options: UIViewAnimationOptions.CurveEaseOut,
+                                       animations: { () in
+                                       self.beansCollection.frame = CGRectMake(16,80,self.calendarView.frame.width,200)
+                }, completion: { (Bool) in
+                 self.beansCollectionHeight.constant = 200//オートレイアウトの制約を変更
+                 self.calendarView.changeMode(.WeekView)
+            })
+            
+          
+        }else if WMtitle == "Month"{
+
+            WMtitle = "Week"
+            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            addBeans.setTitle("Add Beans", forState: UIControlState.Normal)
+            beansCollection.userInteractionEnabled = false
+            self.addBeansTop.constant = 200
+                        //アニメーション
+          
+        UIScrollView.animateWithDuration(0.3,
+//
+                                         animations: { () in
+                                          
+                                            self.beansCollectionHeight.constant = 5
+                                            self.addBeansTop.constant = 5
+            }, completion: { (Bool) in
+                self.addBeansTop.constant = 5
+
+        })
+            UIView.animateWithDuration(0.3,
+                                             delay: 0,
+                                             options: UIViewAnimationOptions.CurveEaseOut,
+                                             animations: { () in
+                                              self.calendarView.changeMode(.MonthView)
+                                               
+                }, completion: { (Bool) in
+                           })
+    }
+
+    }
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ //----------------スワイプイベント
+//    func SwipeUpper(sender:UISwipeGestureRecognizer){
+//        calendarView.changeMode(.WeekView)
+//        WMtitle = "Month"
+//        weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+//    }
+    
+    
 }
 
 
@@ -248,6 +426,16 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
 //    func pushDayView() {
@@ -322,9 +510,11 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
         case 2:
             return [color, color]
         case 3:
+//            return [UIColor.whiteColor()]//変化なし
             return [color, color, color]
         default:
             return [color] // return 1 dot
+//            return [UIColor.whiteColor()]//変化なし
         }
     }
     
@@ -437,48 +627,54 @@ extension CalViewController {
     
  //-------------------------------------------------------week/month統合
     @IBAction func weekAndMonth(sender: UIButton) {
-        var hensux = 0
-        var hensuy = 0
-        var hensuz = 0
+        
         if WMtitle == "Week"{
-            calendarView.changeMode(.WeekView)
             WMtitle = "Month"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-            hensux = 50
-            hensuy = 300
-            hensuz = 50
-//            //アニメーション
-//            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
-//                self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, 50)
-//            }) { (Bool) -> Void in
-//                // cell?.reloadInputViews()
-//                
-//            }
+            addBeans.setTitle("Month Cal", forState: UIControlState.Normal)
+            beansCollection.userInteractionEnabled = true
+            //アニメーション
             
+            UIScrollView.animateWithDuration(0.2,
+                                             //                                       delay: 0,
+                //                                       options: UIViewAnimationOptions.CurveEaseOut,
+                animations: { () in
+                    self.beansCollection.frame = CGRectMake(16,80,self.calendarView.frame.width,230)
+                }, completion: { (Bool) in
+                    self.beansCollectionHeight.constant = 230//オートレイアウトの制約を変更
+                    self.calendarView.changeMode(.WeekView)
+            })
         }else if WMtitle == "Month"{
-            calendarView.changeMode(.MonthView)
             WMtitle = "Week"
             weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            addBeans.setTitle("Add Beans", forState: UIControlState.Normal)
+            beansCollection.userInteractionEnabled = false
+            self.addBeansTop.constant = 200
+            //アニメーション
             
-//            //アニメーション
-//            UIImageView.animateWithDuration(0.5, animations: { () -> Void in
-//                self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, 1)
-//            })
-            hensux = 1
-            hensuy = 160
-            hensuz = 280
+            UIScrollView.animateWithDuration(0.3,
+                                             //
+                animations: { () in
+                    
+                    self.beansCollectionHeight.constant = 5
+                    self.addBeansTop.constant = 5
+                }, completion: { (Bool) in
+                    self.addBeansTop.constant = 5
+                    
+            })
+            UIView.animateWithDuration(0.3,
+                                       delay: 0,
+                                       options: UIViewAnimationOptions.CurveEaseOut,
+                                       animations: { () in
+                                        self.calendarView.changeMode(.MonthView)
+                                        
+                }, completion: { (Bool) in
+            })
         }
-        imageAnime(CGFloat(hensux),y: CGFloat(hensuy),z: CGFloat(hensuz))
+
     }
-    
-    func imageAnime(x:CGFloat,y:CGFloat,z:CGFloat){
-        UIImageView.animateWithDuration(0.5, animations: { () -> Void in
-            
-//            self.calendarView.frame = CGRectMake(16,81,self.view.frame.width - 32,z)
-//            self.BeansSelectimage.frame.size = CGSizeMake(self.view.frame.width, x)
-//            self.workDisplay.frame = CGRectMake(0,300,self.view.frame.width,y)
-        })
-    }
+
+
     
     
     

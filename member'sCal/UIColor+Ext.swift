@@ -33,6 +33,10 @@ extension UIColor {
         return hexStr("c8d5bb",alpha:  1.0)
     }
     
+    class func imageColor() -> UIColor{
+        return hexStr("3f261a",alpha:  1.0)
+    }
+    
     
     class func hexStr (var hexStr : NSString, let alpha : CGFloat) -> UIColor {
         hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")

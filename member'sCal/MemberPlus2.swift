@@ -28,6 +28,11 @@ class MemberPlus2: UIViewController,UICollectionViewDataSource,UICollectionViewD
     @IBOutlet weak var beansImage: UIImageView!
     @IBOutlet weak var collectView: UICollectionView!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var trushButton: UIBarButtonItem!
+    
+    let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
         UIImage(named:"2.png")!,
@@ -70,6 +75,12 @@ class MemberPlus2: UIViewController,UICollectionViewDataSource,UICollectionViewD
         OK.layer.cornerRadius = 3
         
         df.dateFormat = "HH:mm"//-----------------------------------------------日付のフォーマットを決定
+        
+        //キャンセルボタン,ゴミ箱ボタン
+        if ad.memberName.count == 0{
+            cancelButton.enabled = false
+            trushButton.enabled = false
+        }
     }
     
     
@@ -149,7 +160,7 @@ class MemberPlus2: UIViewController,UICollectionViewDataSource,UICollectionViewD
     
     //--------------------------------------------------------------------------------SAVE処理-----とりあえずAppDelegateへ
     func allSave(){
-        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
         if beans == nil{
             beans = 0
         }
@@ -225,7 +236,11 @@ class MemberPlus2: UIViewController,UICollectionViewDataSource,UICollectionViewD
         alert()
     }
     
-    
+    //キャンセルボタン
+    @IBAction func cancellButton(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("calCancell2", sender: nil)
+
+    }
   
     
     

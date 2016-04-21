@@ -38,6 +38,8 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBOutlet weak var sta: UIButton!
     @IBOutlet weak var sun: UIButton!
     @IBOutlet weak var beansImage: UIImageView!
+    @IBOutlet weak var NoBeansIsCancel: UIBarButtonItem!
+    @IBOutlet weak var trushButton: UIBarButtonItem!
     
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
@@ -45,13 +47,14 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         UIImage(named:"3.png")!
     ]
     
-
+    let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     var timeWhat:String = "開始"//-----------------------------------------------開始/終了＿時間判定変数
     var timeStart:String = "08:00"
     var timeFinish:String = "17:00"
     let df = NSDateFormatter()//------------------------------------------------ピッカー初期設定用変数
 //     df.dateFormat = "HH:mm"
-    var dateString = "08:00"//-------------------------------------------------------時間設定用変数
+    var dateString = "08:00"//-------------------------------------------------------時間設定用変数)
     var name = ""//-------------------------------------------------------------名前
     var beans:Int?//-------------------------------------------------------------ビーンズ
 //    var weekSwitch = ""//-------------------------------------------------------曜日選択用変数
@@ -65,12 +68,19 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
         startTime.setTitle("\(timeStart)",forState: UIControlState.Normal)
         finishTime.setTitle("\(timeFinish)", forState: UIControlState.Normal)
         startTime.layer.cornerRadius = 3
         finishTime.layer.cornerRadius = 3
         OK.layer.cornerRadius = 3
         beansImage.alpha = 0
+        
+        //ビーンズがゼロの時
+        if ad.memberName.count == 0{
+            NoBeansIsCancel.enabled = false
+            trushButton.enabled = false
+        }
 
          df.dateFormat = "HH:mm"//-----------------------------------------------日付のフォーマットを決定
         
@@ -164,10 +174,15 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     
  
     
+    
+    
+    
+    
+    
  //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------SAVE処理-----とりあえずAppDelegateへ
     func allSave(){
-        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
         if beans == nil{
             beans = 0
         }
@@ -208,7 +223,8 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         //アラート表示
         presentViewController(alertController,animated:true,completion:nil)
     }
-
+    
+   
     func okGo(){//-----------------------------------------------------①
         allSave()
         UIView.animateWithDuration(0.2, animations: { () -> Void in
@@ -217,22 +233,9 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         self.performSegueWithIdentifier("calGo", sender: nil)
     }
     
+    //アラートOK＆ビーンズ追加
     func okPlus(){
         allSave()
-        //--------------------------------------------メンバープラス2のviewControllerを追加
-    
-  //      let storyboard = UIStoryboard(name: "Main", bundle: nil)
- //       let Plus = storyboard.instantiateViewControllerWithIdentifier("ViewGoust") as! MemberPlus2
-//        let Plus = self.storyboard!.instantiateViewControllerWithIdentifier("ViewGoust") as! MemberPlus2
-//
-//        
-//        self.addChildViewController(Plus)
-////        self.didMoveToParentViewController(Plus)
-//        let goustView = Plus.view
-//        self.view.superview!.insertSubview(goustView, atIndex: 0)//atIndexはレイヤーの順番
-//        goustView.frame = CGRectMake(0,0,self.view.frame.width,self.view.frame.height)
-////        self.view.superview?.insertSubview(goustView, atIndex: 0)//atIndexはレイヤーの順番
-//       Plus.didMoveToParentViewController(self)
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
             
@@ -240,18 +243,15 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         self.performSegueWithIdentifier("makeBeans", sender: nil)
     }
     
-    @IBAction func returnRemake(segue:UIStoryboardSegue){
-        
-    }
-    
-    
-    
-    
+    //Saveボタンを押したとき
     @IBAction func saveAlert(sender: UIBarButtonItem) {
         alert()
     }
     
-   
+    //キャンセルボタン
+    @IBAction func cancelGoCal(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("calCancell", sender: nil)
+    }
     
     
     
@@ -406,8 +406,10 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     
     
     
-    
-    
+ //セグエ戻り口
+    @IBAction func BeansEditCancell(segue:UIStoryboardSegue){
+        
+    }
     
     
     
