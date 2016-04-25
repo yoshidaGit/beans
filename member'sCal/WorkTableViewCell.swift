@@ -12,6 +12,7 @@ class WorkTableViewCell: UITableViewCell {
     @IBOutlet weak var start: UILabel!
     @IBOutlet weak var finish: UILabel!
     @IBOutlet weak var workName: UILabel!
+    @IBOutlet weak var beansCollectionInTableView: UICollectionView!
    
 //    func viewWill(){
 //        let ad = UIApplication.sharedApplication().delegate as! AppDelegate

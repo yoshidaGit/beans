@@ -18,6 +18,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
     var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
+    var genbaName = ""
     var memberStack:[Int]? = []//トゥデイメンバーのいれもの、選択された順番を保持
     var checkMark = Dictionary<Int,Bool>()//チェックマーク判定用
 //    var memberSelected:NSMutableArray = NSMutableArray()
@@ -44,12 +45,13 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
  
     override func viewWillAppear(animated: Bool) {
-        genIndex = ad.ADIndex
+        genIndex = ad.memberIndex
         print(genIndex)
         workName.text = ad.calGenbaName[genIndex]
+        genbaName = ad.calGenbaName[genIndex]
         startTime.text = ad.calStartTime[genIndex]
         finishTime.text = ad.calFinishTime[genIndex]
-        //genIndex = ad.ADIndex
+
     }
     
     
@@ -234,6 +236,28 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
  
     
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func workNameOK(sender: UITextField) {//現場名変更
+        if sender.text == ""{
+            sender.text = "変更された現場名"
+        }
+        genbaName = sender.text!
+        
+    }
+    
+    
+    
+    
     
     
     
@@ -249,24 +273,35 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
  //-------------------------------------------------------------------------------------セーブ＆セグエ
     @IBAction func Saveaction(sender: UIBarButtonItem) {
         allSave()
+         self.performSegueWithIdentifier("GembaEditOK", sender: nil)
     }
     
     func allSave(){
-        if workName.text == nil{
-            workName.text = ""
-        }
-        ad.calGenbaName[genIndex] = workName.text!
-        ad.calStartTime[genIndex] = startTime.text!
-        ad.calFinishTime[genIndex] = finishTime.text!
         
-        var member:[String] = []
-        for (key,value) in memberSelect{
- //           memmber.append(value)
-            
-        }
+        ad.calGenbaName[genIndex] = genbaName
+        //ad.calStartTime[genIndex] = startTime.text!//これらは現場の時間なので、更新の必要なし
+        //ad.calFinishTime[genIndex] = finishTime.text!
+        
+        let count:Int! = memberStack?.count
+        print(count!)
+        
+        
+        
+        
+        
+        
+//        var member:[String] = []
+//        for (key,value) in memberSelect{
+// //           memmber.append(value)
+//            
+//        }
+       
     }
     
     
+    @IBAction func trushAndReturn(sender: UIBarButtonItem) {
+//        ad.
+    }
     
     
     

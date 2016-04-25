@@ -39,7 +39,7 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBOutlet weak var sun: UIButton!
     @IBOutlet weak var beansImage: UIImageView!
     @IBOutlet weak var NoBeansIsCancel: UIBarButtonItem!
-    @IBOutlet weak var trushButton: UIBarButtonItem!
+
     
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
@@ -79,7 +79,7 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         //ビーンズがゼロの時
         if ad.memberName.count == 0{
             NoBeansIsCancel.enabled = false
-            trushButton.enabled = false
+ 
         }
 
          df.dateFormat = "HH:mm"//-----------------------------------------------日付のフォーマットを決定
@@ -94,8 +94,15 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         // Dispose of any resources that can be recreated.
     }
     
-
     
+    override func viewWillAppear(animated:Bool){
+        super.viewWillAppear(animated)
+        
+        //------------------------------------------------------nameフィールドをあらかじめ選択する
+        //デリゲートは？
+        namePlus.becomeFirstResponder()
+        namePlus.text = ""
+    }
 
     
     
@@ -132,6 +139,21 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBAction func backTap(sender: UIButton) {
         timeswitch()//⑦
         pickerOut()//②
+        //--------------------------終了日を開始日より遅くする
+        let dayFunction = DayAndTimeCompare()
+        let DayFunction = dayFunction.dayCompare(timeStart, finish: timeFinish)
+        finishTime.setTitle("\(DayFunction)",forState: UIControlState.Normal)
+        timeFinish = DayFunction
+        finishTime.alpha = 0.1
+        UIButton.animateWithDuration(0.1,
+                                   delay: 0.5,
+                                   options: UIViewAnimationOptions.CurveEaseOut,
+                                   animations: { () in
+                                    self.finishTime.alpha = 1.0
+            }, completion: { (Bool) in
+                
+        })
+
     }
 //-------------------------------------------------------------------------------終了時間をタップ⑥
     @IBAction func finishiTap(sender: UIButton) {
@@ -165,9 +187,12 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBAction func NamePlus(sender: UITextField) {
         var Name:String? = sender.text!
         if Name == nil{
-            Name = ""
+            Name = "new Beans"
+        }else if Name == ""{
+            Name = "new Beans"
         }
         name = Name!
+        namePlus.text = name
     }
     
     
@@ -186,6 +211,9 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         if beans == nil{
             beans = 0
         }
+        if name == ""{
+            name = "new Beans"
+        }
         ad.memberName.append(name)
         ad.memberStart.append(timeStart)
         ad.memberFinish.append(timeFinish)
@@ -199,59 +227,56 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         ad.memberSun.append(sunDay)
     }
     
-    //アラート・アクションシート
-    func alert(){
-        let alertController = UIAlertController(
-                title:"Beansを保存します",
-                message:"",
-            preferredStyle:UIAlertControllerStyle.ActionSheet)
-        
-        alertController.addAction(UIAlertAction(
-            title:"OK! カレンダーへGo！",//-------------------------------①へ
-            style: .Default,
-            handler: {action in self.okGo()}))
-        //ライブラリボタンを追加
-        alertController.addAction(UIAlertAction(
-            title:"OK! 更にBeansを追加！",//------------------------------②へ
-            style: .Default,
-            handler: {action in self.okPlus()}))
-        //キャンセル
-        alertController.addAction(UIAlertAction(
-            title:"キャンセル",
-            style: .Cancel,
-            handler:nil))
-        //アラート表示
-        presentViewController(alertController,animated:true,completion:nil)
-    }
-    
-   
-    func okGo(){//-----------------------------------------------------①
-        allSave()
-        UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
-        })
-        self.performSegueWithIdentifier("calGo", sender: nil)
-    }
-    
-    //アラートOK＆ビーンズ追加
-    func okPlus(){
-        allSave()
-        UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
-            
-        })
-        self.performSegueWithIdentifier("makeBeans", sender: nil)
-    }
+//    //アラート・アクションシート
+//    func alert(){
+//        let alertController = UIAlertController(
+//                title:"Beansを保存します",
+//                message:"",
+//            preferredStyle:UIAlertControllerStyle.ActionSheet)
+//        
+//        alertController.addAction(UIAlertAction(
+//            title:"OK! カレンダーへGo！",//-------------------------------①へ
+//            style: .Default,
+//            handler: {action in self.okGo()}))
+//        //ライブラリボタンを追加
+//        alertController.addAction(UIAlertAction(
+//            title:"OK! 更にBeansを追加！",//------------------------------②へ
+//            style: .Default,
+//            handler: {action in self.okPlus()}))
+//        //キャンセル
+//        alertController.addAction(UIAlertAction(
+//            title:"キャンセル",
+//            style: .Cancel,
+//            handler:nil))
+//        //アラート表示
+//        presentViewController(alertController,animated:true,completion:nil)
+//    }
+//    
+//   
+//    func okGo(){//-----------------------------------------------------①
+//        allSave()
+//        UIView.animateWithDuration(0.2, animations: { () -> Void in
+//            self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
+//        })
+//        self.performSegueWithIdentifier("calGo", sender: nil)
+//    }
+//    
+//    //アラートOK＆ビーンズ追加
+//    func okPlus(){
+//        allSave()
+//        UIView.animateWithDuration(0.2, animations: { () -> Void in
+//            self.view.frame = CGRectMake(0,-(self.view.frame.height),self.view.frame.width,self.view.frame.height)
+//            
+//        })
+//        self.performSegueWithIdentifier("makeBeans", sender: nil)
+//    }
     
     //Saveボタンを押したとき
     @IBAction func saveAlert(sender: UIBarButtonItem) {
-        alert()
+        allSave()
+        self.performSegueWithIdentifier("backBeansTable", sender: nil)
     }
     
-    //キャンセルボタン
-    @IBAction func cancelGoCal(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("calCancell", sender: nil)
-    }
     
     
     

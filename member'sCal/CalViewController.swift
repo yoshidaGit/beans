@@ -17,7 +17,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var weekMonth: UIButton!
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
-    @IBOutlet weak var beansCollection: UICollectionView!
+    @IBOutlet weak var beansColection: UICollectionView!
+
+    @IBOutlet weak var beansSelectedInTable: UICollectionView!
     @IBOutlet weak var plusButton: UIImageView!
    
     @IBOutlet weak var addBeans: UIButton!
@@ -30,7 +32,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     var selectedDay:DayView!
     
-    var WMtitle = "Week"//----------------week/month切替変数 デフォルトがWeek
+    var WMtitle = "Add Beans"//----------------week/month切替変数 デフォルトがWeek
     
     var calIndex = 0//インデックス保持用
     
@@ -60,26 +62,15 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         monthLabel.font = UIFont.boldSystemFontOfSize(CGFloat(25))
         monthLabel.text = CVDate(date: NSDate()).globalDescription
         
+        weekMonth.layer.cornerRadius = 3
+        
         //TODO: 今月以外の日にちをタップしてその月にスクロールしても、タップした日にちが選択されないので非表示にしておく。不具合解消したらON
         calendarView.changeDaysOutShowingState(true)
         shouldShowDaysOut = false
         
 
-        weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-        
-        beansCollection.userInteractionEnabled = false//はじめはスクロールビューに触らせない
-        
-        
-        //-------------------------------------------------------------------appDelegateの変数を代入
-        let ad = UIApplication.sharedApplication().delegate as! AppDelegate
-       genbaName = ad.calGenbaName
-        startTime = ad.calStartTime
-        finishTime = ad.calFinishTime
-       day = ad.calDay
-//
-//        beansStartTime = ad.calStartTime
-//        beansFinishTime = ad.calFinishTime
-//        
+        //weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+    
         
     }
     
@@ -88,13 +79,19 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(animated: Bool) {
-//            var ad = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        workDisplay.reloadData()
-        
+    override func viewWillAppear(animated: Bool) {//----------------------ここでデリゲートの変数を代入、テーブルビューを更新
+        genbaName = ad.calGenbaName
+        startTime = ad.calStartTime
+        finishTime = ad.calFinishTime
+        day = ad.calDay
 
         
+        workDisplay.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+       // workDisplay.reloadData()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,10 +100,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
-        beansCollection.layer.cornerRadius = 5
-//        calendarView.frame = CGRectMake(16,81,self.view.frame.width - 32,300)
-//        BeansSelectimage.frame = CGRectMake(16,150,self.view.frame.width - 32, 230)
-//        workDisplay.frame = CGRectMake(0,400,self.view.frame.size.width,150)
+        beansColection.layer.cornerRadius = 5
+        self.workDisplay.reloadData()
     }
     
 
@@ -154,7 +149,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     //行を選択された時に呼ばれる
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        ad.ADIndex = indexPath.row//アップデリゲートに保存
+        ad.memberIndex = indexPath.row//アップデリゲートに保存
     }
  
 
@@ -187,16 +182,24 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 
     }
 
-    @IBAction func returnCal(segue:UIStoryboardSegue){//GenbaViewから戻ってくるとき
+    @IBAction func returnCal(segue:UIStoryboardSegue){//GenbaViewから戻ってくるとき（genbaMakeOkと統合、使ってない）
 
     
     }
     
-    @IBAction func returnCalCancell(segue:UIStoryboardSegue){//genbaBiewからキャンセルしてきたとき
+    @IBAction func returnCalCancell(segue:UIStoryboardSegue){//GenbaMakeView,GenbaViewonからキャンセルしてきたとき
     }
 
-
-
+//    @IBAction func returnCancellFromBeansEdit(segue:UIStoryboardSegue){//BeansEditTableViewからキャンセルしてきたとき
+//        if ad.memberName.count == 0{//ビーンズが0のとき、強制的にmemberPlusへ飛ばす
+//            self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
+//        }
+//    
+//    }
+    @IBAction func genbaMakeOK(segue:UIStoryboardSegue){//GenbaMakeViewControllerから戻ってきたとき
+        //self.workDisplay.reloadData()
+    
+    }
 
     
     
@@ -295,31 +298,31 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
  //----------------------------------------------------------------------------------------------ｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰｰビーンズ追加ボタン
     @IBAction func addBeansButton(sender: UIButton) {
-        if WMtitle == "Week"{
+        if WMtitle == "Add Beans"{
  //           calendarView.changeMode(.WeekView)
-            WMtitle = "Month"
-            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            WMtitle = "Month Cal"
+            //weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
             addBeans.setTitle("Month Cal", forState: UIControlState.Normal)
-            beansCollection.userInteractionEnabled = true
+            beansColection.userInteractionEnabled = true
                         //アニメーション
 
             UIScrollView.animateWithDuration(0.2,
 //                                       delay: 0,
 //                                       options: UIViewAnimationOptions.CurveEaseOut,
                                        animations: { () in
-                                       self.beansCollection.frame = CGRectMake(16,80,self.calendarView.frame.width,200)
+                                       self.beansColection.frame = CGRectMake(16,80,self.calendarView.frame.width,200)
                 }, completion: { (Bool) in
                  self.beansCollectionHeight.constant = 200//オートレイアウトの制約を変更
                  self.calendarView.changeMode(.WeekView)
             })
             
           
-        }else if WMtitle == "Month"{
+        }else if WMtitle == "Month Cal"{
 
-            WMtitle = "Week"
-            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+            WMtitle = "Add Beans"
+            //weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
             addBeans.setTitle("Add Beans", forState: UIControlState.Normal)
-            beansCollection.userInteractionEnabled = false
+            beansColection.userInteractionEnabled = false
             self.addBeansTop.constant = 200
                         //アニメーション
           
@@ -340,42 +343,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
                                               self.calendarView.changeMode(.MonthView)
                                                
                 }, completion: { (Bool) in
-                           })
+        })
+        }
     }
-
-    }
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
- //----------------スワイプイベント
-//    func SwipeUpper(sender:UISwipeGestureRecognizer){
-//        calendarView.changeMode(.WeekView)
-//        WMtitle = "Month"
-//        weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-//    }
-    
     
 }
 
@@ -426,14 +396,7 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected!")
         selectedDay = dayView
-        
 
-        
-        
-        
-        
-        
-        
         
         
     }
@@ -625,52 +588,52 @@ extension CalViewController {
         }
     }
     
- //-------------------------------------------------------week/month統合
+ //-------------------------------------------------------ビーンズ編集
     @IBAction func weekAndMonth(sender: UIButton) {
         
-        if WMtitle == "Week"{
-            WMtitle = "Month"
-            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-            addBeans.setTitle("Month Cal", forState: UIControlState.Normal)
-            beansCollection.userInteractionEnabled = true
-            //アニメーション
-            
-            UIScrollView.animateWithDuration(0.2,
-                                             //                                       delay: 0,
-                //                                       options: UIViewAnimationOptions.CurveEaseOut,
-                animations: { () in
-                    self.beansCollection.frame = CGRectMake(16,80,self.calendarView.frame.width,230)
-                }, completion: { (Bool) in
-                    self.beansCollectionHeight.constant = 230//オートレイアウトの制約を変更
-                    self.calendarView.changeMode(.WeekView)
-            })
-        }else if WMtitle == "Month"{
-            WMtitle = "Week"
-            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-            addBeans.setTitle("Add Beans", forState: UIControlState.Normal)
-            beansCollection.userInteractionEnabled = false
-            self.addBeansTop.constant = 200
-            //アニメーション
-            
-            UIScrollView.animateWithDuration(0.3,
-                                             //
-                animations: { () in
-                    
-                    self.beansCollectionHeight.constant = 5
-                    self.addBeansTop.constant = 5
-                }, completion: { (Bool) in
-                    self.addBeansTop.constant = 5
-                    
-            })
-            UIView.animateWithDuration(0.3,
-                                       delay: 0,
-                                       options: UIViewAnimationOptions.CurveEaseOut,
-                                       animations: { () in
-                                        self.calendarView.changeMode(.MonthView)
-                                        
-                }, completion: { (Bool) in
-            })
-        }
+//        if WMtitle == "Edit Beans"{
+//            WMtitle = "Month Cal"
+//            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+//            addBeans.setTitle("Month Cal", forState: UIControlState.Normal)
+//            beansColection.userInteractionEnabled = true
+//            //アニメーション
+//            
+//            UIScrollView.animateWithDuration(0.2,
+//                                             //                                       delay: 0,
+//                //                                       options: UIViewAnimationOptions.CurveEaseOut,
+//                animations: { () in
+//                    self.beansColection.frame = CGRectMake(16,80,self.calendarView.frame.width,230)
+//                }, completion: { (Bool) in
+//                    self.beansCollectionHeight.constant = 230//オートレイアウトの制約を変更
+//                    self.calendarView.changeMode(.WeekView)
+//            })
+//        }else if WMtitle == "Month Cal"{
+//            WMtitle = "Edit Beans"
+//            weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
+//            addBeans.setTitle("Edit Beans", forState: UIControlState.Normal)
+//            beansColection.userInteractionEnabled = false
+//            self.addBeansTop.constant = 200
+//            //アニメーション
+//            
+//            UIScrollView.animateWithDuration(0.3,
+//                                             //
+//                animations: { () in
+//                    
+//                    self.beansCollectionHeight.constant = 5
+//                    self.addBeansTop.constant = 5
+//                }, completion: { (Bool) in
+//                    self.addBeansTop.constant = 5
+//                    
+//            })
+//            UIView.animateWithDuration(0.3,
+//                                       delay: 0,
+//                                       options: UIViewAnimationOptions.CurveEaseOut,
+//                                       animations: { () in
+//                                        self.calendarView.changeMode(.MonthView)
+//                                        
+//                }, completion: { (Bool) in
+//            })
+//        }
 
     }
 

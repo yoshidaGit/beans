@@ -32,13 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //-------------------------------------------カレンダーテーブル
     var calGenbaName:[String] = ["蒔田","清水が丘","保土ケ谷"]
-    var calStartTime:[String] = ["08:00","終日","08:30"]
-    var calFinishTime:[String] = ["17:30","","22:00"]
-    var calDay:[String] = ["1 April, 2016","2 April, 2016","3 April, 2016"]//日付の書式がよくわからないので適当
-//    var calBeans:[Int] = [2,1,0]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
-    var calBeansName:[[String]] = []//[["吉田","ヨシダ"],["サコナカ"],["ヨシダ","サコナカ","イハラ"]]
-    var calBeansStartTime:[String] = ["08:00","09:00","09:00"]//レコードごとに時間調整出来るようにする
-    var calBeansFinishTime:[String] = ["12:00","17:00","18:00"]//レコードごとに時間調整出来るようにする
+    var calStartTime:[String] = ["08:00","13:00","08:30"]
+    var calFinishTime:[String] = ["17:30","15:00","22:00"]
+    var calDay:[String] = ["2016/04/01","2016/04/02","2016/04/01"]//日付の書式がよくわからないので適当
+    var NSCalDay:[NSDate] = []//日付をNSDate型で保持（まだ未着手）
+    
+    
+ //------------------------------------------実務作業員テーブル
+    //    var calBeans:[Int] = [2,1,0]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
+    var calBeansName:[String] = ["吉田","yoshida","sakonaka","yoshida"]
+    var calBeansStartTime:[String] = ["08:00","09:00","09:00","08:30"]//レコードごとに時間調整出来るようにする
+    var calBeansFinishTime:[String] = ["12:00","17:00","18:00","17:30"]//レコードごとに時間調整出来るようにする
+    var calBeansDay:[String] = ["2016/04/01","2016/04/01","2016/04/01","2016/04/02"]
     
 //-------------------------------------------ビーンズフィールド
     let Beans:[UIImage] = [
@@ -50,7 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 //-------------------------------------------その他変数
-    var ADIndex = 0
+    var memberIndex = 0
+    var calIndex = 0
+    var calBeansIndex = 0
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

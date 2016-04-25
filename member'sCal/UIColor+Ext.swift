@@ -37,6 +37,10 @@ extension UIColor {
         return hexStr("3f261a",alpha:  1.0)
     }
     
+    class func imageColorAlpha() -> UIColor{
+        return hexStr("3f261a",alpha:  0.5)
+    }
+    
     
     class func hexStr (var hexStr : NSString, let alpha : CGFloat) -> UIColor {
         hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")

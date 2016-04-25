@@ -10,6 +10,8 @@ import UIKit
 
 class BeansEditTableView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var beansTableView: UITableView!
+    @IBOutlet weak var goCal: UIBarButtonItem!
+    @IBOutlet weak var addBeans: UIBarButtonItem!
     
     let ad = UIApplication.sharedApplication().delegate as! AppDelegate
 //    var editIndex = 0
@@ -24,6 +26,19 @@ class BeansEditTableView: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
     }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        if ad.memberName.count == 0{
+            goCal.enabled = false
+        }else{
+        goCal.enabled = true
+        }
+    }
+    
+    
+    
+    
+    
     
     //セルの行数
     func tableView(tableView:UITableView,numberOfRowsInSection section:Int) -> Int{
@@ -129,19 +144,31 @@ class BeansEditTableView: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     //セルを選択したとき
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        ad.ADIndex = indexPath.row
+        ad.memberIndex = indexPath.row
     }
     
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "beansZeroAndReturn"{
+//            if ad.memberName.count != 0{
+//                self.performSegueWithIdentifier("beansEditOK", sender: nil)
+//            }
+//        }
         
     }
     
     
     
+
     
     
+    
+    
+    
+    
+    //----------------------------------------------------------------------------------------セグエ
+    //----------------------------------------------------------------------------------------
     @IBAction func returnBeansCancel(segue:UIStoryboardSegue){//genbaBiewからキャンセルしてきたとき
         //        let GVC = segue.sourceViewController as! GenbaViewController
         //        calIndex = GVC.genIndex
@@ -152,6 +179,71 @@ class BeansEditTableView: UIViewController,UITableViewDelegate,UITableViewDataSo
         BED.allSave()
         beansTableView.reloadData()
     }
+    
+    
+    @IBAction func trushAndBack(segue:UIStoryboardSegue){//ビーンズを削除したとき
+        let BED = segue.sourceViewController as! BeansEditDetail
+        BED.trush()
+        beansTableView.reloadData()
+        
+        if ad.memberName.count == 0{//もしビーンズが0になったら、”GoCal"をエナブルフォルスにする
+            goCal.enabled = false
+        }else{
+        goCal.enabled = true
+        }
+    }
+    
+    
+    @IBAction func whichReturn(sender: UIBarButtonItem) {//ツールバーの戻るボタン：戻り道を選択
+//        if ad.memberName.count == 0{
+//            self.performSegueWithIdentifier("BeansZeroAndBack", sender: nil)
+//        }else{
+            self.performSegueWithIdentifier("beansEditOK", sender: nil)
+ //       }
+        
+        
+    }
+    
+    @IBAction func AddBeans(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("BeansZeroAndBack", sender: nil)
+        
+    }
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -55,7 +55,7 @@ class BeansEditDetail: UIViewController,UICollectionViewDataSource,UICollectionV
         super.viewDidLoad()
 
         //アップデリゲートのインデックスを参照
-        index = ad.ADIndex
+        index = ad.memberIndex
         name = ad.memberName[index]
         start = ad.memberStart[index]
         finish = ad.memberFinish[index]
@@ -190,7 +190,19 @@ class BeansEditDetail: UIViewController,UICollectionViewDataSource,UICollectionV
         ad.memberSun[index] = Rsun
     }
 
-    
+    func trush(){
+        ad.memberName.removeAtIndex(index)
+        ad.memberStart.removeAtIndex(index)
+        ad.memberFinish.removeAtIndex(index)
+        ad.memberBeans.removeAtIndex(index)
+        ad.memberMon.removeAtIndex(index)
+        ad.memberTue.removeAtIndex(index)
+        ad.memberWen.removeAtIndex(index)
+        ad.memberThu.removeAtIndex(index)
+        ad.memberFri.removeAtIndex(index)
+        ad.memberSta.removeAtIndex(index)
+        ad.memberSun.removeAtIndex(index)
+    }
 
     
     
@@ -332,40 +344,54 @@ class BeansEditDetail: UIViewController,UICollectionViewDataSource,UICollectionV
         switchColor(sun, hantei: Rsun)
     }
 
-//    @IBAction func Mon(sender: UIButton) {
-//        monDay = switchWeek(monDay)
-//        switchColor(mon,hantei: monDay)
-//    }
-//    
-//    @IBAction func Tue(sender: UIButton) {
-//        tueDay = switchWeek(tueDay)
-//        switchColor(tue,hantei: tueDay)
-//    }
-//    
-//    @IBAction func Wen(sender: UIButton) {
-//        wenDay = switchWeek(wenDay)
-//        switchColor(wen,hantei:wenDay)
-//    }
-//    
-//    @IBAction func Thu(sender: UIButton) {
-//        thuDay = switchWeek(thuDay)
-//        switchColor(thu,hantei:thuDay)
-//    }
-//    
-//    @IBAction func Fri(sender: UIButton) {
-//        friDay = switchWeek(friDay)
-//        switchColor(fri,hantei:friDay)
-//    }
-//    
-//    @IBAction func Sta(sender: UIButton) {
-//        staDay = switchWeek(staDay)
-//        switchColor(sta,hantei:staDay)
-//    }
-//    
-//    @IBAction func Sun(sender: UIButton) {
-//        sunDay = switchWeek(sunDay)
-//        switchColor(sun,hantei:sunDay)
-//    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  
     
     
