@@ -19,7 +19,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     //    @IBOutlet weak var daysOutSwitch: UISwitch!
     @IBOutlet weak var beansColection: UICollectionView!
 
-    @IBOutlet weak var beansSelectedInTable: UICollectionView!
+    @IBOutlet weak var beansInTable: UICollectionView!
+  
     @IBOutlet weak var plusButton: UIImageView!
    
     @IBOutlet weak var addBeans: UIButton!
@@ -46,6 +47,15 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     var beansStartTime = []
     var beansFinishTime = []
  //---------------------------------------------------------------------------」
+    let Beans:[UIImage] = [
+        UIImage(named:"1.png")!,
+        UIImage(named:"2.png")!,
+        UIImage(named:"3.png")!
+    ]
+ //------------------------------------------------------------------------------
+    var tablefield:[[Int]] = [[2,1,2],[0,0],[1,2,0],[0],[],[1],[],[2,1,0]]//試しのサンプルよう
+    
+    
     
     
     let ad = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -63,6 +73,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         monthLabel.text = CVDate(date: NSDate()).globalDescription
         
         weekMonth.layer.cornerRadius = 3
+        plusButton.layer.shadowOpacity = 0.4//プラスボタンに陰を付ける
+        plusButton.layer.shadowOffset = CGSizeMake(0,2)
         
         //TODO: 今月以外の日にちをタップしてその月にスクロールしても、タップした日にちが選択されないので非表示にしておく。不具合解消したらON
         calendarView.changeDaysOutShowingState(true)
@@ -152,7 +164,15 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         ad.memberIndex = indexPath.row//アップデリゲートに保存
     }
  
-
+    //コレクションビューのデリゲート、データソースを設定
+    /*override */func tableView ( tableView : UITableView , willDisplayCell cell : UITableViewCell , forRowAtIndexPath indexPath : NSIndexPath ) {
+        guard let TableViewCell = cell as? WorkTableViewCell
+            else {
+                return
+        }
+        TableViewCell.setCollectionViewDataSourceDelegate ( self , forRow : indexPath.row )
+    }
+    
 //-----------------------------------------------------------------------------------------セルにデータをセット
     func setCell(cell:WorkTableViewCell,atIndexPath indexPath:NSIndexPath){
         
@@ -216,11 +236,26 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     // セルが表示されるときに呼ばれる処理（1個のセルを描画する毎に呼び出されます
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0{
-            let cell:beansCell = collectionView.dequeueReusableCellWithReuseIdentifier("cell1", forIndexPath: indexPath) as! beansCell
+        //tagが”50000”のbeansColection:UICollectionview
+        if collectionView.tag == 50000{
+            if indexPath.section == 0{
+                let cell:CalViewBeansCollectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("beansSelectCell", forIndexPath: indexPath) as! CalViewBeansCollectionCell
                     cell.layer.cornerRadius = 4
-           
+                cell.beansCollectionSelectImage.image = Beans[ad.memberBeans[indexPath.row]]
+                cell.beansCollectionName.text = ad.memberName[indexPath.row]
             return cell
+        }
+        }else if collectionView.tag != 50000{
+            
+       // if collectionView.tag == 2{
+            if indexPath.section == 0{
+                
+                let cellIn:CalViewBeansInTableViewToCell = collectionView.dequeueReusableCellWithReuseIdentifier("cellInTableView", forIndexPath: indexPath) as! CalViewBeansInTableViewToCell
+                //cellIn.layer.cornerRadius = 4
+                cellIn.beansCollectionImage.image = Beans[tablefield[collectionView.tag][indexPath.row]]
+                
+                return cellIn
+            }
         }
         return UICollectionViewCell()
     }
@@ -232,19 +267,32 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     // 表示するセルの数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        
+        if collectionView.tag == 50000{
+        return ad.memberName.count
+        }/*else if collectionView.tag != 50000{*/
+        return tablefield[collectionView.tag].count
+    //    }
     }
     
     //セルをタップしたとき
     func collectionView(collectionView:UICollectionView,didSelectItemAtIndexPath indexPath:NSIndexPath){
-        
-        
-        
     }
     
     
-    
-    
+    /// 横のスペース
+//    var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//    layout.minimumInteritemSpacing = 0.0
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInterItemSpacing section: Int) -> CGFloat {
+//        var num:CGFloat = 0.0
+//        if collectionView.tag != 50000{
+//        num = 50.0
+//        }else if collectionView.tag == 50000{
+//         num = 8.0
+//        }
+        
+        return 0.0//num
+    }
     
     
     

@@ -140,11 +140,13 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         timeswitch()//⑦
         pickerOut()//②
         //--------------------------終了日を開始日より遅くする
+        
         let dayFunction = DayAndTimeCompare()
         let DayFunction = dayFunction.dayCompare(timeStart, finish: timeFinish)
         finishTime.setTitle("\(DayFunction)",forState: UIControlState.Normal)
         timeFinish = DayFunction
         finishTime.alpha = 0.1
+        
         UIButton.animateWithDuration(0.1,
                                    delay: 0.5,
                                    options: UIViewAnimationOptions.CurveEaseOut,
@@ -166,10 +168,16 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     func timeswitch(){
         if timeWhat == "開始"{
             timeStart = dateString
+            
             startTime.setTitle("\(dateString)", forState: UIControlState.Normal)
             
         }else if timeWhat == "終了"{
             timeFinish = dateString
+            
+            if timeFinish == "00:00"{//午前0時対策
+                timeFinish = "24:00"
+                dateString = "24:00"
+            }
             finishTime.setTitle("\(dateString)", forState: UIControlState.Normal)
         }
     

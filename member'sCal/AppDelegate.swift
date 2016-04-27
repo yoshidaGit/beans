@@ -41,9 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  //------------------------------------------実務作業員テーブル
     //    var calBeans:[Int] = [2,1,0]//ここは更に入れ子にするか、またはビーンズを追加するたびにレコードを追加するか・・
     var calBeansName:[String] = ["吉田","yoshida","sakonaka","yoshida"]
-    var calBeansStartTime:[String] = ["08:00","09:00","09:00","08:30"]//レコードごとに時間調整出来るようにする
+    var calBeansStartTime:[String] = ["08:00","09:00","13:00","08:30"]//レコードごとに時間調整出来るようにする
     var calBeansFinishTime:[String] = ["12:00","17:00","18:00","17:30"]//レコードごとに時間調整出来るようにする
     var calBeansDay:[String] = ["2016/04/01","2016/04/01","2016/04/01","2016/04/02"]
+    var calBeansGenbaName:[String] = ["蒔田","蒔田","清水が丘","清水が丘"]
     
 //-------------------------------------------ビーンズフィールド
     let Beans:[UIImage] = [
