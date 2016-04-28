@@ -31,7 +31,10 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     var shouldShowDaysOut = true
     var animationFinished = true
     
+//    var selectedDay:DayView!
     var selectedDay:DayView!
+    var selectDayString:String = ""
+    var selectDayDate:NSDate = NSDate()
     
     var WMtitle = "Add Beans"//----------------week/month切替変数 デフォルトがWeek
     
@@ -54,9 +57,10 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     ]
  //------------------------------------------------------------------------------
     var tablefield:[[Int]] = [[2,1,2],[0,0],[1,2,0],[0],[],[1],[],[2,1,0]]//試しのサンプルよう
-    
-    
-    
+ //------------------------------------------------------------------------------------------------日付フォーマット
+    var df = NSDateFormatter()
+    var dfd = NSDateFormatter()
+
     
     let ad = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -80,9 +84,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         calendarView.changeDaysOutShowingState(true)
         shouldShowDaysOut = false
         
-
-        //weekMonth.setTitle("\(WMtitle)", forState: UIControlState.Normal)
-    
+        df.dateFormat = "yyyy/MM/dd"
+        dfd.dateFormat = "dd MM,yyyy"
         
     }
     
@@ -141,6 +144,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell = UITableViewCell(style: .Default, reuseIdentifier: "genbaCell")
         if indexPath.section == 0{
+            
+            
 //            var daySelect = ad.calDay.indexOf(dayView.da
 //            if daySelect?.isEmpty == false{
             
@@ -440,12 +445,19 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
         return true // Default value is true
     }
     
-    //TODO: 不必要に何度もコールされているので、必用時以外を無処理でスルーする判定が必要
+    //TODO: 不必要に何度もコールされているので、必用時以外を無処理でスルーする判定が必要**********************************************ここで日付を取得
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
-        print("\(dayView.date.commonDescription) is selected!")
-        selectedDay = dayView
+        print("\(dayView.date.commonDescription) is selected! デフォルト")
 
+        selectedDay = dayView
+//        print(selectedDay.date.OKDate + "func OKDate:String")
+//        selectDayString = "\(dayView.date.OKDate)"
         
+//        print(df.dateFromString(dayView.date.commonDescription))
+        print("\(df.dateFromString(dayView.date.OKDate)!)　func OKDate　をNSDateに変換")
+//        print("\(dfd.dateFromString(dayView.date.commonDescription)) OK!　func commonDescription をNSDateに変換")
+ 
+        selectDayDate = df.dateFromString(dayView.date.OKDate)!
         
     }
     
@@ -682,7 +694,7 @@ extension CalViewController {
 //                }, completion: { (Bool) in
 //            })
 //        }
-
+        
     }
 
 
