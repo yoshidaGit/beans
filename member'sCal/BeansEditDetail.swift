@@ -36,7 +36,8 @@ class BeansEditDetail: UIViewController,UICollectionViewDataSource,UICollectionV
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
         UIImage(named:"2.png")!,
-        UIImage(named:"3.png")!
+        UIImage(named:"3.png")!,
+        UIImage(named:"beans1")!,
     ]
     
     var name = ""

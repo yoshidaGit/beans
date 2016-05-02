@@ -12,5 +12,20 @@ class CalViewBeansCollectionCell: UICollectionViewCell {
     @IBOutlet weak var beansCollectionSelectImage: UIImageView!
     @IBOutlet weak var beansCollectionName: UILabel!
     
+    //    タッチを感知した際に呼ばれるメソッド.
+ //       override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+ //           beansCollectionSelectImage.frame = CGRectMake(0,0,50,50)//, <#T##y: CGFloat##CGFloat#>, <#T##width: CGFloat##CGFloat#>, <#T##height: CGFloat##CGFloat#>)
+            
+    
+  //          }
 
+
+    
+    
+        
+        
+        
+        
+        
+    
 }

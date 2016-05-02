@@ -28,13 +28,19 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     @IBOutlet weak var beansCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var addBeansTop: NSLayoutConstraint!
     
+    @IBOutlet weak var pushButtonScale: UIView!
+    
     var shouldShowDaysOut = true
     var animationFinished = true
     
-//    var selectedDay:DayView!
+// --------------------------------------------タッチした日付取得
     var selectedDay:DayView!
     var selectDayString:String = ""
     var selectDayDate:NSDate = NSDate()
+//---------------------------------------------
+    
+    var BeansImage:UIImageView = UIImageView()//コレクションビューをタッチしたときに呼ばれるビュー
+ //   var cellRect:[CGPoint] = [CGPoint()]//コレクションビュセルの座標を取れるか？
     
     var WMtitle = "Add Beans"//----------------week/month切替変数 デフォルトがWeek
     
@@ -53,7 +59,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
         UIImage(named:"2.png")!,
-        UIImage(named:"3.png")!
+        UIImage(named:"3.png")!,
+        UIImage(named:"beans1")!,
     ]
  //------------------------------------------------------------------------------
     var tablefield:[[Int]] = [[2,1,2],[0,0],[1,2,0],[0],[],[1],[],[2,1,0]]//試しのサンプルよう
@@ -70,6 +77,9 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        let pan = UIPanGestureRecognizer(target: self, action: "drugBeans")
+//        self.view.addGestureRecognizer(pan)
+        
         self.menuView.firstWeekday = .Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
         //monthLabel.font = UIFont.systemFontOfSize(CGFloat(19))
@@ -99,13 +109,19 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         startTime = ad.calStartTime
         finishTime = ad.calFinishTime
         day = ad.calDay
-
+        if WMtitle == "Add Beans"{
+            beansColection.userInteractionEnabled = true
+        }else if WMtitle == "Month Cal"{
+            beansColection.userInteractionEnabled = false
+        }
         
-        workDisplay.reloadData()
+ //       workDisplay.reloadData()
+ //       beansColection.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
        // workDisplay.reloadData()
+        BeansImage.image = Beans[0]//タッチで変換が出来るまでとりあえず
 
     }
     
@@ -117,6 +133,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         menuView.commitMenuViewUpdate()
         beansColection.layer.cornerRadius = 5
         self.workDisplay.reloadData()
+        beansColection.reloadData()
     }
     
 
@@ -152,9 +169,11 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
             
             
         let cell = tableView.dequeueReusableCellWithIdentifier("genbaCell") as! WorkTableViewCell
-        cell.start.text = startTime[indexPath.row] as! String
-        cell.finish.text = finishTime[indexPath.row] as! String
-        cell.workName.text = genbaName[indexPath.row] as! String
+
+            
+        cell.start.text = startTime[indexPath.row] as? String
+        cell.finish.text = finishTime[indexPath.row] as? String
+        cell.workName.text = genbaName[indexPath.row] as? String
             
         
         return cell
@@ -180,7 +199,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
 //-----------------------------------------------------------------------------------------セルにデータをセット
     func setCell(cell:WorkTableViewCell,atIndexPath indexPath:NSIndexPath){
-        
+       
     }
     
 
@@ -246,8 +265,18 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
             if indexPath.section == 0{
                 let cell:CalViewBeansCollectionCell = collectionView.dequeueReusableCellWithReuseIdentifier("beansSelectCell", forIndexPath: indexPath) as! CalViewBeansCollectionCell
                     cell.layer.cornerRadius = 4
+//                var rect:CGPoint = cell.frame.origin
+//                cellRect.append(rect)
+//                let pan = UIPanGestureRecognizer(target: self, action: "drugBeans")
+//                self.view.addGestureRecognizer(pan)
+//                print("gesture")
                 cell.beansCollectionSelectImage.image = Beans[ad.memberBeans[indexPath.row]]
+                cell.beansCollectionSelectImage.tag = indexPath.row
                 cell.beansCollectionName.text = ad.memberName[indexPath.row]
+                
+                let panG = UIPanGestureRecognizer(target: self, action: "drugBeans:")
+                cell.beansCollectionSelectImage.addGestureRecognizer(panG)
+                
             return cell
         }
         }else if collectionView.tag != 50000{
@@ -282,7 +311,78 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     //セルをタップしたとき
     func collectionView(collectionView:UICollectionView,didSelectItemAtIndexPath indexPath:NSIndexPath){
+//        if collectionView.tag == 50000{
+//            var beansImage = indexPath.row//セルの番号
+//            BeansImage.image = Beans[ad.memberBeans[beansImage]]
+//        }
     }
+
+   
+    //beansCollectionのセルをドラッグしたときに呼ばれる
+    //①cellForItemAtIndexPathでジェスチャを登録、イメージに追加。追加したイメージにタグを付ける②ここでsender.view as! UIImageViewでイメージを呼び出し、タグ番号からイメージを決定
+     func drugBeans(sender: UIPanGestureRecognizer) {
+        let point:CGPoint = sender.locationInView(self.view)//はじめのポイント
+
+        print(point.x,point.y)
+        if sender.state == .Began{
+            var num = sender.view as! UIImageView
+            BeansImage.image = Beans[ad.memberBeans[num.tag]]
+            BeansImage.frame = CGRectMake(point.x ,point.y ,50,50)
+            view.addSubview(BeansImage)//ビューに追加
+            BeansImage.alpha = 0.8
+//            let indexPath:NSIndexPath? = beansColection.indexPathForItemAtPoint(point)//ポイントからindexPathを取得
+//            print(indexPath?.row)
+//            if indexPath != nil{//nilの対策
+//                print("true")
+//                BeansImage.image = Beans[ad.memberBeans[(indexPath!.row)]]
+//            }
+        }
+        let drugPoint:CGPoint = CGPoint(x: sender.view!.center.x + point.x - 25,y: sender.view!.center.y - 50 + point.y)//ドラッグ量
+        
+        BeansImage.frame = CGRectMake(drugPoint.x,drugPoint.y/*point.x,point.y*/,50,50)
+       // view.addSubview(BeansImage)//ビューに追加
+      //  BeansImage.alpha = 0.9
+        //        drugPoint = point
+        
+        if sender.state == .Ended{
+            let dropZone = workDisplay.frame//ワークディスプレイの大きさを取得
+            
+            if CGRectContainsPoint(dropZone, drugPoint){//引数にCGRect,CGPointを持ち、Boolを返す
+                BeansImage.frame = CGRectMake(0,0,50,50)
+                
+            }else{
+                
+                self.BeansImage.removeFromSuperview()
+            }
+        }
+    }
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     /// 横のスペース
@@ -322,6 +422,39 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         self.performSegueWithIdentifier("GenbaMake", sender: nil)
     }
 
+    //ボタン　ドラッグ＆ドロップ
+    @IBAction func buttonPun(sender: UIPanGestureRecognizer) {
+        var point:CGPoint = sender.translationInView(self.plusButton)
+        var movePoint:CGPoint = CGPointMake(sender.view!.center.x + point.x,sender.view!.center.y)
+                let scale = pushButtonScale.frame//移動範囲決定
+                var drugPoint = sender.locationInView(self.view)//ドラッグポイントをCGPointで取得
+                if CGRectContainsPoint(scale,drugPoint){//判定
+                    print("ok")
+                    sender.view!.center = movePoint
+                    sender.setTranslation(CGPointZero, inView: self.plusButton)
+                }else{
+                    print("false")
+        //        sender.view!.center = movePoint
+        //        sender.setTranslation(CGPointZero, inView: self.plusButton)
+                
+                }
+
+//        sender.view!.center = movePoint
+//        sender.setTranslation(CGPointZero, inView: self.plusButton)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //ボタンスワイプ
     @IBAction func memberPlusGoRight(sender: AnyObject) {
         UIButton.animateWithDuration(0.1, animations: { () -> Void in
@@ -336,7 +469,6 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
                 self.plusButton.frame = CGRectMake(self.view.frame.width / 2 - 60,self.view.frame.height - 80,60,60)
             })
             self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
-       
         
     }
     
@@ -448,16 +580,12 @@ extension CalViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate 
     //TODO: 不必要に何度もコールされているので、必用時以外を無処理でスルーする判定が必要**********************************************ここで日付を取得
     func didSelectDayView(dayView: CVCalendarDayView, animationDidFinish: Bool) {
         print("\(dayView.date.commonDescription) is selected! デフォルト")
-
-        selectedDay = dayView
-//        print(selectedDay.date.OKDate + "func OKDate:String")
-//        selectDayString = "\(dayView.date.OKDate)"
-        
-//        print(df.dateFromString(dayView.date.commonDescription))
         print("\(df.dateFromString(dayView.date.OKDate)!)　func OKDate　をNSDateに変換")
-//        print("\(dfd.dateFromString(dayView.date.commonDescription)) OK!　func commonDescription をNSDateに変換")
- 
+        print(dayView.date.OKDate)
+        
+        selectedDay = dayView
         selectDayDate = df.dateFromString(dayView.date.OKDate)!
+        selectDayString = dayView.date.OKDate
         
     }
     

@@ -299,8 +299,8 @@ class GenbaMakeViewController: UIViewController {
     
     
     
-    
-    
+ //*******************************************************************************　保存
+ //-------------------------------------------------------------------------------
     @IBAction func saveAndReturn(sender: UIBarButtonItem) {//saveボタンを押したとき
         allSave()
         
@@ -334,7 +334,7 @@ class GenbaMakeViewController: UIViewController {
         //アップデリゲートに保存、差分ぶんの日にちがアペンドされる
         for plus:Int in 0...x{
             ad.calDay.append(days[plus])
-            //ad.NDCalDay.append(NSDays[plus])//--------NSDate型、まだ未設定
+            ad.NSCalDay.append(NSdays[plus])//--------NSDate型、まだ未設定
             ad.calGenbaName.append(GMVCGenbaName)
             ad.calStartTime.append(GMVCStartTime)
             ad.calFinishTime.append(GMVCFinishTime)

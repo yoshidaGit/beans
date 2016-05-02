@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var calStartTime:[String] = ["08:00","13:00","08:30"]
     var calFinishTime:[String] = ["17:30","15:00","22:00"]
     var calDay:[String] = ["2016/04/01","2016/04/02","2016/04/01"]//日付の書式がよくわからないので適当
-    var NSCalDay:[NSDate] = []//日付をNSDate型で保持（まだ未着手）
+    var NSCalDay:[NSDate] = [NSDate(),NSDate(),NSDate()]//日付をNSDate型で保持（まだ未着手）
     
     
  //------------------------------------------実務作業員テーブル
@@ -50,7 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
         UIImage(named:"2.png")!,
-        UIImage(named:"3.png")!
+        UIImage(named:"3.png")!,
+        UIImage(named:"beans1")!,
     ]
     
     

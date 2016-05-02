@@ -44,8 +44,9 @@ class MemberPlus: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     let Beans:[UIImage] = [
         UIImage(named:"1.png")!,
         UIImage(named:"2.png")!,
-        UIImage(named:"3.png")!
-    ]
+        UIImage(named:"3.png")!,
+        UIImage(named:"beans1")!,
+        ]
     
     let ad = UIApplication.sharedApplication().delegate as! AppDelegate
     
