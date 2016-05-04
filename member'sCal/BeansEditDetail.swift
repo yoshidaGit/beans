@@ -38,6 +38,9 @@ class BeansEditDetail: UIViewController,UICollectionViewDataSource,UICollectionV
         UIImage(named:"2.png")!,
         UIImage(named:"3.png")!,
         UIImage(named:"beans1")!,
+        UIImage(named:"4")!,
+        UIImage(named:"5")!,
+        
     ]
     
     var name = ""

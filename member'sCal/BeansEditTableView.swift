@@ -21,6 +21,8 @@ class BeansEditTableView: UIViewController,UITableViewDelegate,UITableViewDataSo
         UIImage(named:"2.png")!,
         UIImage(named:"3.png")!,
         UIImage(named:"beans1")!,
+        UIImage(named:"4")!,
+        UIImage(named:"5")!,
     ]
     
     override func viewDidLoad() {

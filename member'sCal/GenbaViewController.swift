@@ -15,6 +15,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     @IBOutlet weak var timeControllView: UIView!
     @IBOutlet weak var todayMember: UICollectionView!
     @IBOutlet weak var serectMember: UICollectionView!
+    @IBOutlet weak var timeManegiment: UIView!//xibを貼り付けるビュー
     
     var ad = UIApplication.sharedApplication().delegate as! AppDelegate//---------------appDelegateを取得
 
@@ -30,6 +31,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadtemp()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +44,8 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
         UIImage(named:"2.png")!,
         UIImage(named:"3.png")!,
         UIImage(named:"beans1")!,
+        UIImage(named:"4")!,
+        UIImage(named:"5")!,
     ]
     
  
@@ -55,7 +59,12 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
 
     }
     
-    
+    func loadtemp(){
+        let Sview:UIView = UINib(nibName: "timeManegiment", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        
+        self.timeManegiment.addSubview(Sview)
+        
+    }
     
     
     

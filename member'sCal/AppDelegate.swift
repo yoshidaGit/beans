@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIImage(named:"2.png")!,
         UIImage(named:"3.png")!,
         UIImage(named:"beans1")!,
+        UIImage(named:"4")!,
     ]
     
     

@@ -40,7 +40,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 //---------------------------------------------
     
     var BeansImage:UIImageView = UIImageView()//コレクションビューをタッチしたときに呼ばれるビュー
- //   var cellRect:[CGPoint] = [CGPoint()]//コレクションビュセルの座標を取れるか？
+
     
     var WMtitle = "Add Beans"//----------------week/month切替変数 デフォルトがWeek
     
@@ -61,6 +61,8 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         UIImage(named:"2.png")!,
         UIImage(named:"3.png")!,
         UIImage(named:"beans1")!,
+        UIImage(named:"4")!,
+        UIImage(named:"5")!,
     ]
  //------------------------------------------------------------------------------
     var tablefield:[[Int]] = [[2,1,2],[0,0],[1,2,0],[0],[],[1],[],[2,1,0]]//試しのサンプルよう
@@ -77,8 +79,6 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let pan = UIPanGestureRecognizer(target: self, action: "drugBeans")
-//        self.view.addGestureRecognizer(pan)
         
         self.menuView.firstWeekday = .Sunday
         //TODO: 画面サイズが小さい時はフォントサイズを小さくする必要があるので画面サイズ判定での調整を追加する必要がある
@@ -358,46 +358,22 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     }
    
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /// 横のスペース
-//    var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//    layout.minimumInteritemSpacing = 0.0
+//セルの行間？
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInterItemSpacing section: Int) -> CGFloat {
-//        var num:CGFloat = 0.0
-//        if collectionView.tag != 50000{
-//        num = 50.0
-//        }else if collectionView.tag == 50000{
-//         num = 8.0
-//        }
+
         
-        return 0.0//num
+        return 0.0
     }
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
     
     
     
