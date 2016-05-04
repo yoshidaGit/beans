@@ -56,7 +56,7 @@ class GenbaViewController: UIViewController,UICollectionViewDelegateFlowLayout,U
         genbaName = ad.calGenbaName[genIndex]
         startTime.text = ad.calStartTime[genIndex]
         finishTime.text = ad.calFinishTime[genIndex]
-
+ //       timeManegimant.layer.cornerRadius = 5
     }
     
     func loadtemp(){

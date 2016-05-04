@@ -10,6 +10,7 @@
 
 import UIKit
 
+@IBDesignable
 class timeManegimant: UIView {
     @IBOutlet weak var stackView: UIView!
     @IBOutlet weak var InView: UIView!
@@ -25,30 +26,68 @@ class timeManegimant: UIView {
     @IBOutlet weak var five: UIView!
     @IBOutlet weak var six: UIView!
     
+    @IBOutlet weak var betweenBar: UIView!
+
+    
     
     class func instance() -> timeManegimant{
-        return UINib(nibName: "timeManegiment", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! timeManegimant
+        return UINib(nibName: "timeManegimant", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! timeManegimant
     }
+
+
     
-    var startTime = ""
-    var finishTime = ""
+//    override func awakeFromNib() {
+//        
+//        one.layer.cornerRadius = 3
+//        two.layer.cornerRadius = 3
+//        three.layer.cornerRadius = 3
+//        four.layer.cornerRadius = 3
+//        five.layer.cornerRadius = 3
+//        six.layer.cornerRadius = 3
+//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
+//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
+//        //      max.translatesAutoresizingMaskIntoConstraints = true
+//        
+//        betweenBar.layer.frame.origin.x = min.center.x
+//        betweenBar.layer.frame.size.width = max.center.x - min.center.x
+//    }
+//    override init(frame: CGRect) {
+//        
+//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
+//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
+//    }
     
+ 
+//    required init?(coder aDecoder: NSCoder) {
+////        fatalError("init(coder:) has not been implemented")
+//       
+//        one.layer.cornerRadius = 3
+//        two.layer.cornerRadius = 3
+//        three.layer.cornerRadius = 3
+//        four.layer.cornerRadius = 3
+//        five.layer.cornerRadius = 3
+//        six.layer.cornerRadius = 3
+//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
+//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
+//        //      max.translatesAutoresizingMaskIntoConstraints = true
+//        
+//        betweenBar.layer.frame.origin.x = min.center.x
+//        betweenBar.layer.frame.size.width = max.center.x - min.center.x
+//        fatalError("init(coder:) has not been implemented")
+//    }
+
+    var startTime = "08:00"
+    var finishTime = "17:00"
     
-    func firstLoad(){
-        one.layer.cornerRadius = 3
-        two.layer.cornerRadius = 3
-        three.layer.cornerRadius = 3
-        four.layer.cornerRadius = 3
-        five.layer.cornerRadius = 3
-        six.layer.cornerRadius = 3
-        min.frame = CGRectMake(InView.center.x - 100,InView.center.y/* - 36*/,40,40)
-        max.frame = CGRectMake(InView.center.x - 40,InView.center.y /*- 36*/,40,40)
-//        min.translatesAutoresizingMaskIntoConstraints = true
-//        max.translatesAutoresizingMaskIntoConstraints = true
-        
-    }
+ 
+    
+
     
     @IBAction func minDrug(sender: UIPanGestureRecognizer) {
+        if sender.state == .Began{
+            min.translatesAutoresizingMaskIntoConstraints = true
+            betweenBar.translatesAutoresizingMaskIntoConstraints = true
+        }
         let point:CGPoint = sender.translationInView(self.min)
         let movePoint:CGPoint = CGPointMake(sender.view!.center.x + point.x,sender.view!.center.y)
         
@@ -58,8 +97,11 @@ class timeManegimant: UIView {
             sender.view!.center = movePoint
             sender.setTranslation(CGPointZero, inView: self.min)//移動蓄積値をゼロにしている
             UILabel.animateWithDuration(0.1, animations: { () -> Void in
-                self.minLabel.center.x = self.min.center.x
+             //   self.minLabel.center.x = self.min.center.x
+                self.betweenBar.layer.frame.origin.x = self.min.center.x
+                self.betweenBar.layer.frame.size.width = self.max.center.x - self.min.center.x
             })
+
         }else{//ここには何も書かないので何もおこらない
         }
         
@@ -73,11 +115,17 @@ class timeManegimant: UIView {
                 max.center.x = min.center.x + 5
             }
             startTime = time(Int(min.center.x - InView.frame.origin.x))
+            minLabel.text = startTime
+           
             print("start",startTime)
         }
     }
     
     @IBAction func maxDrug(sender: UIPanGestureRecognizer) {
+        if sender.state == .Began{
+            max.translatesAutoresizingMaskIntoConstraints = true
+            betweenBar.translatesAutoresizingMaskIntoConstraints = true
+        }
         let point:CGPoint = sender.translationInView(self.max)
         let movePoint:CGPoint = CGPointMake(sender.view!.center.x + point.x,sender.view!.center.y)
         
@@ -87,8 +135,13 @@ class timeManegimant: UIView {
             sender.setTranslation(CGPointZero, inView: self.max)//移動蓄積値をゼロにしている
             
             UILabel.animateWithDuration(0.1, animations: { () -> Void in
-                self.maxLabel.center.x = self.max.center.x
+           //     self.maxLabel.center.x = self.max.center.x
+                self.betweenBar.layer.frame.size.width = self.max.center.x - self.min.center.x
+                self.betweenBar.layer.frame.origin.x = self.min.center.x
             })
+//            UIView.animateWithDuration(0.1, animations: { () -> Void in//ビットウィーンバー
+// //               self.betweenBar.frame = CGRectMake(self.min.center.x, self.InView.center - 3, <#T##width: CGFloat##CGFloat#>, 6)
+//            })
         }else{
         }
         if movePoint.x <= min.center.x{
@@ -97,9 +150,62 @@ class timeManegimant: UIView {
         
         if sender.state == .Ended{
             finishTime = time(Int(max.center.x - InView.frame.origin.x))
+            
+            maxLabel.text = finishTime
             print("finish",finishTime)
         }
     }
+    
+    
+    @IBAction func start(sender: UIButton) {
+        index = timeCount.indexOf(startTime)!
+        if index != 0{
+            minLabel.text = timeCount[index - 1]
+        }
+        startTime = minLabel.text!
+    }
+    @IBAction func startPlus(sender: UIButton) {
+        index = timeCount.indexOf(startTime)!
+        if index != 48{
+            minLabel.text = timeCount[index + 1]
+        }
+        startTime = minLabel.text!
+    }
+    @IBAction func finishMynus(sender: UIButton) {
+        index = timeCount.indexOf(finishTime)!
+        if index != 0{
+        maxLabel.text = timeCount[index - 1]
+        }
+        startTime = maxLabel.text!
+    }
+    @IBAction func finishPlus(sender: UIButton) {
+        index = timeCount.indexOf(finishTime)!
+        if index != 48{
+        maxLabel.text = timeCount[index + 1]
+        }
+        finishTime = maxLabel.text!
+    }
+    
+   
+    
+    
+    var index = 0
+    let timeCount = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30","24:00"]
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func time(ten:Int) -> String{
         var str = ""

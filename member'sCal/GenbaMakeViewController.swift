@@ -61,6 +61,15 @@ class GenbaMakeViewController: UIViewController {
         todayString = df.stringFromDate(today) as String
         print(todayString)
         
+        loadtemp()
+        
+    }
+    
+    func loadtemp(){
+        let Sview:UIView = UINib(nibName: "timeManegiment", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+        
+        self.timeView.addSubview(Sview)
+
     }
     
     override func viewWillAppear(animated:Bool){
@@ -151,13 +160,13 @@ class GenbaMakeViewController: UIViewController {
             allDayButton.setImage(check[1], forState: .Normal)
             startTime.enabled = false
             finishTime.enabled = false
-            timeSelectPicker.hidden = true
+//            timeSelectPicker.hidden = true
         }else{
             allDay = false
             allDayButton.setImage(check[0], forState: .Normal)
             startTime.enabled = true
             finishTime.enabled = true
-            timeSelectPicker.hidden = false
+//            timeSelectPicker.hidden = false
         }
     }
     
@@ -207,20 +216,20 @@ class GenbaMakeViewController: UIViewController {
     func caseZero(){
         timeSelect.tintColor = UIColor.imageColor()
         datePickerView.backgroundColor = UIColor.imageColor()
-        timeView.backgroundColor = UIColor.imageColor()
+ //       timeView.backgroundColor = UIColor.imageColor()
         
         whichDay = false
             dateSelectPicker.date = df.dateFromString(GMVCStartDay)!//ピッカーに開始日を入力
-            timeSelectPicker.date = dft.dateFromString(GMVCStartTime)!//ピッカーに開始時間を入力
+ //           timeSelectPicker.date = dft.dateFromString(GMVCStartTime)!//ピッカーに開始時間を入力
     }
     func caseOne(){
         timeSelect.tintColor = UIColor.brownColor()
         datePickerView.backgroundColor = UIColor.brownColor()
-        timeView.backgroundColor = UIColor.brownColor()
+//        timeView.backgroundColor = UIColor.brownColor()
         
         whichDay = true
         dateSelectPicker.date = df.dateFromString(GMVCFinishDay)!//ピッカーに終了日を入力
-        timeSelectPicker.date = dft.dateFromString(GMVCFinishTime)!
+//        timeSelectPicker.date = dft.dateFromString(GMVCFinishTime)!
     }
  //-----------------------------------------------------------------------------------------ここまで
     
