@@ -20,7 +20,6 @@
 		5F2331971CC8F6890069FA94 /* CalViewBeansCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2331961CC8F6890069FA94 /* CalViewBeansCollectionCell.swift */; };
 		5F2331991CC8FE670069FA94 /* CalViewBeansInTableViewToCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2331981CC8FE670069FA94 /* CalViewBeansInTableViewToCell.swift */; };
 		5F23319B1CCB0ECF0069FA94 /* DayAndTimeCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23319A1CCB0ECF0069FA94 /* DayAndTimeCompare.swift */; };
-		5F6590341CD8CAD900DF3738 /* TimeManegimentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6590331CD8CAD900DF3738 /* TimeManegimentView.swift */; };
 		5F65903C1CD96D3600DF3738 /* timeManegiment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F65903B1CD96D3600DF3738 /* timeManegiment.xib */; };
 		5F65903E1CD96F5F00DF3738 /* timeManegimant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65903D1CD96F5F00DF3738 /* timeManegimant.swift */; };
 		5F6590441CD9956D00DF3738 /* UIViewIBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6590431CD9956D00DF3738 /* UIViewIBDesignable.swift */; };
@@ -103,7 +102,6 @@
 		5F2331961CC8F6890069FA94 /* CalViewBeansCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalViewBeansCollectionCell.swift; sourceTree = "<group>"; };
 		5F2331981CC8FE670069FA94 /* CalViewBeansInTableViewToCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalViewBeansInTableViewToCell.swift; sourceTree = "<group>"; };
 		5F23319A1CCB0ECF0069FA94 /* DayAndTimeCompare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayAndTimeCompare.swift; sourceTree = "<group>"; };
-		5F6590331CD8CAD900DF3738 /* TimeManegimentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManegimentView.swift; sourceTree = "<group>"; };
 		5F65903B1CD96D3600DF3738 /* timeManegiment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = timeManegiment.xib; sourceTree = "<group>"; };
 		5F65903D1CD96F5F00DF3738 /* timeManegimant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeManegimant.swift; sourceTree = "<group>"; };
 		5F6590431CD9956D00DF3738 /* UIViewIBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewIBDesignable.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			children = (
 				ECA739DC1CC53D0000B40154 /* Utility */,
 				33AE084B1B26DA81005A4A23 /* Main.storyboard */,
-				5F6590331CD8CAD900DF3738 /* TimeManegimentView.swift */,
 				33AE08441B26DA81005A4A23 /* AppDelegate.swift */,
 				5FF65B301C9E80C90039FDF4 /* CalViewController.swift */,
 				5F2331961CC8F6890069FA94 /* CalViewBeansCollectionCell.swift */,
@@ -216,20 +213,20 @@
 				5FF65AF41C9E50110039FDF4 /* dayCell.swift */,
 				5FCD876C1C9B7F3700988714 /* MemberPlus.swift */,
 				5FE34C4B1C9C417600927B03 /* beansCell.swift */,
-				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
 				33D942F91B2DAFBF009D0E95 /* GenbaViewController.swift */,
 				5FCA8CE11CA7E834007210D2 /* TodayMemberCell.swift */,
 				5FCA8CDD1CA7E50B007210D2 /* SelectMemberCell.swift */,
-				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
 				5F6590431CD9956D00DF3738 /* UIViewIBDesignable.swift */,
 				5F6590451CD9985D00DF3738 /* UIButtonIBDesignable.swift */,
-				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
 				5F7847A21CC3927500881634 /* GenbaMakeViewController.swift */,
 				5F81060E1CC4ED9200E09331 /* BeansEditTableView.swift */,
 				5F8106121CC5EDB900E09331 /* BeansEditDetail.swift */,
 				5F8106101CC4F11800E09331 /* BeansTableViewCell.swift */,
 				5F23319A1CCB0ECF0069FA94 /* DayAndTimeCompare.swift */,
 				33AE084E1B26DA81005A4A23 /* Images.xcassets */,
+				33D942FA1B2DAFBF009D0E95 /* GenbaViewController.xib */,
+				33D942FE1B2DB023009D0E95 /* memberCenter.xib */,
+				33D942F61B2D9D7A009D0E95 /* GenbaCell.xib */,
 				5F65903D1CD96F5F00DF3738 /* timeManegimant.swift */,
 				5F65903B1CD96D3600DF3738 /* timeManegiment.xib */,
 				33AE08501B26DA82005A4A23 /* LaunchScreen.xib */,
@@ -457,7 +454,6 @@
 				EC03A0311CA80922000C3966 /* CVAuxiliaryView.swift in Sources */,
 				ECA739E01CC53DC600B40154 /* UIDatePickerCustom.swift in Sources */,
 				5F81060F1CC4ED9200E09331 /* BeansEditTableView.swift in Sources */,
-				5F6590341CD8CAD900DF3738 /* TimeManegimentView.swift in Sources */,
 				EC03A04A1CA80922000C3966 /* CVShape.swift in Sources */,
 				5FCD876D1C9B7F3700988714 /* MemberPlus.swift in Sources */,
 				5FE34C4C1C9C417600927B03 /* beansCell.swift in Sources */,

@@ -34,47 +34,7 @@ class timeManegimant: UIView {
         return UINib(nibName: "timeManegimant", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! timeManegimant
     }
 
-
     
-//    override func awakeFromNib() {
-//        
-//        one.layer.cornerRadius = 3
-//        two.layer.cornerRadius = 3
-//        three.layer.cornerRadius = 3
-//        four.layer.cornerRadius = 3
-//        five.layer.cornerRadius = 3
-//        six.layer.cornerRadius = 3
-//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
-//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
-//        //      max.translatesAutoresizingMaskIntoConstraints = true
-//        
-//        betweenBar.layer.frame.origin.x = min.center.x
-//        betweenBar.layer.frame.size.width = max.center.x - min.center.x
-//    }
-//    override init(frame: CGRect) {
-//        
-//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
-//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
-//    }
-    
- 
-//    required init?(coder aDecoder: NSCoder) {
-////        fatalError("init(coder:) has not been implemented")
-//       
-//        one.layer.cornerRadius = 3
-//        two.layer.cornerRadius = 3
-//        three.layer.cornerRadius = 3
-//        four.layer.cornerRadius = 3
-//        five.layer.cornerRadius = 3
-//        six.layer.cornerRadius = 3
-//        min.frame = CGRectMake(InView.center.x - 50,InView.center.y/* - 36*/,40,40)
-//        max.frame = CGRectMake(InView.center.x + 50,InView.center.y /*- 36*/,40,20)
-//        //      max.translatesAutoresizingMaskIntoConstraints = true
-//        
-//        betweenBar.layer.frame.origin.x = min.center.x
-//        betweenBar.layer.frame.size.width = max.center.x - min.center.x
-//        fatalError("init(coder:) has not been implemented")
-//    }
 
     var startTime = "08:00"
     var finishTime = "17:00"
@@ -156,40 +116,46 @@ class timeManegimant: UIView {
         }
     }
     
-    
+ 
+    //プラスマイナスボタン
     @IBAction func start(sender: UIButton) {
-        index = timeCount.indexOf(startTime)!
-        if index != 0{
-            minLabel.text = timeCount[index - 1]
+        startIndex = timeCount.indexOf(startTime)!
+        if startIndex != 0{
+            minLabel.text = timeCount[startIndex - 1]
+            startTime = minLabel.text!
         }
-        startTime = minLabel.text!
+        minLabel.text = startTime
     }
     @IBAction func startPlus(sender: UIButton) {
-        index = timeCount.indexOf(startTime)!
-        if index != 48{
-            minLabel.text = timeCount[index + 1]
+        startIndex = timeCount.indexOf(startTime)!
+        if startIndex != 48{
+            minLabel.text = timeCount[startIndex + 1]
+            startTime = minLabel.text!
         }
-        startTime = minLabel.text!
+         minLabel.text = startTime
     }
     @IBAction func finishMynus(sender: UIButton) {
-        index = timeCount.indexOf(finishTime)!
-        if index != 0{
-        maxLabel.text = timeCount[index - 1]
+        finishIndex = timeCount.indexOf(finishTime)!
+        if finishIndex != 0{
+            maxLabel.text = timeCount[finishIndex - 1]
+            finishTime = maxLabel.text!
         }
-        startTime = maxLabel.text!
+        maxLabel.text = finishTime
     }
     @IBAction func finishPlus(sender: UIButton) {
-        index = timeCount.indexOf(finishTime)!
-        if index != 48{
-        maxLabel.text = timeCount[index + 1]
+        finishIndex = timeCount.indexOf(finishTime)!
+        if finishIndex != 48{
+            maxLabel.text = timeCount[finishIndex + 1]
+            finishTime = maxLabel.text!
         }
-        finishTime = maxLabel.text!
+        maxLabel.text = finishTime
     }
     
    
     
     
-    var index = 0
+    var startIndex = 17
+    var finishIndex = 35
     let timeCount = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30","24:00"]
     
     

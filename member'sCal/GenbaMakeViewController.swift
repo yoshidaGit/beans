@@ -160,13 +160,15 @@ class GenbaMakeViewController: UIViewController {
             allDayButton.setImage(check[1], forState: .Normal)
             startTime.enabled = false
             finishTime.enabled = false
-//            timeSelectPicker.hidden = true
+            timeView.userInteractionEnabled = false
+            timeView.alpha = 0.5
         }else{
             allDay = false
             allDayButton.setImage(check[0], forState: .Normal)
             startTime.enabled = true
             finishTime.enabled = true
-//            timeSelectPicker.hidden = false
+            timeView.userInteractionEnabled = true
+            timeView.alpha = 1.0
         }
     }
     

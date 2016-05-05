@@ -45,7 +45,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     var WMtitle = "Add Beans"//----------------week/month切替変数 デフォルトがWeek
     
     var calIndex = 0//インデックス保持用
-    
+    var numNum:Int = 0//ドラッグ＆ドロップ保持用
     
  //--------------------------------------------------------------------------appDelegateのレコードを取得する変数
     var genbaName = []
@@ -121,11 +121,11 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     override func viewDidAppear(animated: Bool) {
        // workDisplay.reloadData()
-        BeansImage.image = Beans[0]//タッチで変換が出来るまでとりあえず
+        BeansImage.image = Beans[0]//初期化
 
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {//カレンダー切替で呼ばれる
         super.viewDidLayoutSubviews()
         
         
@@ -241,7 +241,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
 //    
 //    }
     @IBAction func genbaMakeOK(segue:UIStoryboardSegue){//GenbaMakeViewControllerから戻ってきたとき
-        //self.workDisplay.reloadData()
+        self.workDisplay.reloadData()
     
     }
 
@@ -287,6 +287,7 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
                 let cellIn:CalViewBeansInTableViewToCell = collectionView.dequeueReusableCellWithReuseIdentifier("cellInTableView", forIndexPath: indexPath) as! CalViewBeansInTableViewToCell
                 //cellIn.layer.cornerRadius = 4
                 cellIn.beansCollectionImage.image = Beans[tablefield[collectionView.tag][indexPath.row]]
+               // cellIn.tag = indexPath.row//　＜−追記！
                 
                 return cellIn
             }
@@ -322,36 +323,45 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     //①cellForItemAtIndexPathでジェスチャを登録、イメージに追加。追加したイメージにタグを付ける②ここでsender.view as! UIImageViewでイメージを呼び出し、タグ番号からイメージを決定
      func drugBeans(sender: UIPanGestureRecognizer) {
         let point:CGPoint = sender.locationInView(self.view)//はじめのポイント
-
-        print(point.x,point.y)
+        var num = sender.view as! UIImageView//次も使うのでここに書いておく
+ //       numNum = num.tag
+//        print(point.x,point.y)
         if sender.state == .Began{
-            var num = sender.view as! UIImageView
+         //   var num = sender.view as! UIImageView
             BeansImage.image = Beans[ad.memberBeans[num.tag]]
-            BeansImage.frame = CGRectMake(point.x ,point.y ,50,50)
+            print("インデックスのタグナンバー",num.tag)
+            numNum = num.tag
+            BeansImage.frame = CGRectMake(point.x - 25,point.y - 50 ,50,50)
             view.addSubview(BeansImage)//ビューに追加
             BeansImage.alpha = 0.8
-//            let indexPath:NSIndexPath? = beansColection.indexPathForItemAtPoint(point)//ポイントからindexPathを取得
-//            print(indexPath?.row)
-//            if indexPath != nil{//nilの対策
-//                print("true")
-//                BeansImage.image = Beans[ad.memberBeans[(indexPath!.row)]]
-//            }
+
         }
-        let drugPoint:CGPoint = CGPoint(x: sender.view!.center.x + point.x - 25,y: sender.view!.center.y - 50 + point.y)//ドラッグ量
+        let drugPoint:CGPoint = CGPoint(x: sender.view!.center.x + point.x ,y: sender.view!.center.y + point.y)//ドラッグ量
         
-        BeansImage.frame = CGRectMake(drugPoint.x,drugPoint.y/*point.x,point.y*/,50,50)
-       // view.addSubview(BeansImage)//ビューに追加
-      //  BeansImage.alpha = 0.9
-        //        drugPoint = point
+        BeansImage.frame = CGRectMake(drugPoint.x - 25,drugPoint.y - 50/*point.x,point.y*/,50,50)
         
         if sender.state == .Ended{
-            let dropZone = workDisplay.frame//ワークディスプレイの大きさを取得
-            
+            var dropZone:CGRect = self.workDisplay.frame// workDisplay.frame//ワークディスプレイの大きさを取得
+
             if CGRectContainsPoint(dropZone, drugPoint){//引数にCGRect,CGPointを持ち、Boolを返す
-                BeansImage.frame = CGRectMake(0,0,50,50)
+                let dropPoint = sender.locationInView(workDisplay)//ここはテーブルビューを指定しなきゃ取ってこない
+                var dropIndex:NSIndexPath? = self.workDisplay.indexPathForRowAtPoint(dropPoint)
+               // BeansImage.frame = CGRectMake(0,0,50,50)
+                 print("インデックスのタグナンバー",num.tag)
+                print("ad.memberBeans[タグナンバー]",ad.memberBeans[num.tag])
+                print("dropIndex放り込むインデックス",dropIndex?.row)
+                tablefield[(dropIndex?.row)!].append(ad.memberBeans[numNum/*num.tag*/])
+                
+                workDisplay.reloadData()
+                self.BeansImage.removeFromSuperview()
+                
+                
+                
+                
+                
                 
             }else{
-                
+                print("おわり",num.tag)
                 self.BeansImage.removeFromSuperview()
             }
         }
@@ -432,21 +442,21 @@ class CalViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     //ボタンスワイプ
-    @IBAction func memberPlusGoRight(sender: AnyObject) {
-        UIButton.animateWithDuration(0.1, animations: { () -> Void in
-            self.plusButton.frame = CGRectMake(self.view.frame.width / 2 + 30,self.view.frame.height - 80,60,60)
-        })
-        self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
-    
-    }
-
-    @IBAction func memberPlusGoLeft(sender: AnyObject) {
-                    UIButton.animateWithDuration(0.1, animations: { () -> Void in
-                self.plusButton.frame = CGRectMake(self.view.frame.width / 2 - 60,self.view.frame.height - 80,60,60)
-            })
-            self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
-        
-    }
+//    @IBAction func memberPlusGoRight(sender: AnyObject) {
+//        UIButton.animateWithDuration(0.1, animations: { () -> Void in
+//            self.plusButton.frame = CGRectMake(self.view.frame.width / 2 + 30,self.view.frame.height - 80,60,60)
+//        })
+//        self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
+//    
+//    }
+//
+//    @IBAction func memberPlusGoLeft(sender: AnyObject) {
+//                    UIButton.animateWithDuration(0.1, animations: { () -> Void in
+//                self.plusButton.frame = CGRectMake(self.view.frame.width / 2 - 60,self.view.frame.height - 80,60,60)
+//            })
+//            self.performSegueWithIdentifier("BeansPlusReturn", sender: nil)
+//        
+//    }
     
 
     
